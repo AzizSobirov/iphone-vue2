@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import { LockScreen, Statusbar, Gesture } from "@/components/layout";
 
 export default {
@@ -36,6 +36,12 @@ export default {
   components: { Statusbar, Gesture, LockScreen },
   computed: {
     ...mapState(["device"]),
+  },
+  methods: {
+    ...mapMutations(["getSettings"]),
+  },
+  mounted() {
+    this.getSettings();
   },
 };
 </script>

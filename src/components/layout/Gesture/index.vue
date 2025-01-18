@@ -5,14 +5,16 @@
 </template>
 
 <script>
-import clickSound from "@/assets/sounds/click.mp3";
+import { playSound } from "@/assets/composables/useMe";
 
 export default {
   name: "Gesture",
   methods: {
     backToHome() {
-      this.$router.push("/");
-      new Audio(clickSound).play();
+      if (this.$route.name !== "home") {
+        this.$router.push("/");
+      }
+      playSound();
     },
   },
 };

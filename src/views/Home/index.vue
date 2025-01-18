@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { playSound } from "@/assets/composables/useMe";
+
 import cameraSvg from "./img/camera.svg";
 import gallerySvg from "./img/gallery.svg";
 import navigatorSvg from "./img/navigator.svg";
@@ -43,7 +45,6 @@ import phoneSvg from "./img/phone.svg";
 import settingsSvg from "./img/settings.svg";
 import contactsSvg from "./img/contacts.svg";
 import messagesSvg from "./img/messages.svg";
-import clickSound from "@/assets/sounds/click.mp3";
 
 export default {
   name: "home",
@@ -132,7 +133,7 @@ export default {
   methods: {
     openApp(app) {
       this.$router.push(app.link);
-      new Audio(clickSound).play();
+      playSound();
     },
   },
 };
@@ -198,10 +199,12 @@ export default {
 .tab {
   position: relative;
   cursor: pointer;
+  width: em(38);
+  height: em(38);
 
   img {
-    width: em(38);
-    height: em(38);
+    width: 100%;
+    height: 100%;
     object-fit: cover;
   }
 

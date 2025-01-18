@@ -150,8 +150,8 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
-import unlockSound from "@/assets/sounds/unlock.mp3";
+import { mapState, mapMutations } from "vuex";
+import { playSound } from "@/assets/composables/useMe";
 
 export default {
   name: "LockScreen",
@@ -175,7 +175,7 @@ export default {
     }, 60000);
   },
   methods: {
-    ...mapActions(["toggleLock"]),
+    ...mapMutations(["toggleLock"]),
 
     getDate() {
       const date = new Date();
@@ -203,11 +203,8 @@ export default {
     },
 
     unlockScreen() {
-      // Play unlock sound
-      const unlockAudio = new Audio(unlockSound);
-      unlockAudio.play();
-
       this.toggleLock(); // Dispatch action to toggle lock state
+      playSound("unlock");
     },
     // Handle touch start
     handleTouchStart(e) {

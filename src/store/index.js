@@ -3,6 +3,7 @@ import Vuex from "vuex";
 
 import bg1 from "../assets/img/backgrounds/dark-1.png";
 import bg2 from "../assets/img/backgrounds/light-1.png";
+import noAvatar from "../assets/img/no-avatar.svg";
 
 Vue.use(Vuex);
 
@@ -11,11 +12,16 @@ const backgrounds = [bg1];
 export default new Vuex.Store({
   state: {
     device: {
-      locked: true,
-      theme: "dark",
-      scale: 1.63,
+      locked: false,
+      theme: "light",
+      scale: 1.63, // vh
       fontFamily: "SF Pro Display",
       background: bg1,
+    },
+    profile: {
+      avatar: noAvatar,
+      name: "John Doe",
+      number: "+123456789",
     },
 
     fonts: [],
@@ -23,21 +29,24 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
+    getSettings(state) {
+      if (localStorage.getItem("iphone")) {
+        state.device = JSON.parse(localStorage.getItem("iphone"));
+        // state.device.locked = true;
+      }
+    },
     toggleLock(state) {
-      state.device.locked = !state.device.locked;
+      state.device.locked = false;
     },
-    toggleTheme(state) {
-      const theme = state.device.theme;
-      state.device.theme = theme === "light" ? "dark" : "light";
-      state.device.background = theme === "dark" ? bg2 : bg1;
+    toggleTheme(state, value) {
+      state.device.theme = value ? "light" : "dark";
+      state.device.background = value ? bg1 : bg2;
+      localStorage.setItem("iphone", JSON.stringify(state.device));
     },
-  },
-  actions: {
-    toggleLock({ commit }) {
-      commit("toggleLock");
-    },
-    toggleTheme({ commit }) {
-      commit("toggleTheme");
+    changeScale(state, input) {
+      state.device.scale = input.target.value;
+      localStorage.setItem("iphone", JSON.stringify(state.device));
     },
   },
+  actions: {},
 });
