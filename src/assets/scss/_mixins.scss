@@ -1,0 +1,5 @@
+// SCSS function to use the CSS variable for base font size
+@function em($px) {
+  $remValue: ($px / 16) + em;
+  @return $remValue;
+}

@@ -1,0 +1,81 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.iphone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: em(280);
+  height: em(568);
+  font-family: "SF Pro Display", sans-serif;
+  background: url("../img/bg.png") center/contain no-repeat;
+  user-select: none;
+  overflow: hidden;
+}
+
+.iphone * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.iphone a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.iphone {
+  --safearea-top: 1.875em;
+  --safearea-bottom: 1em;
+  --safearea-inline: 1em;
+  --base-radius: 2.375em;
+
+  --primary: red;
+  --background: #f5f8ff;
+  --foreground: #1c1c1e;
+}
+
+.iphone.dark {
+  --primary: blue;
+
+  --background: #000000;
+  --foreground: #fff;
+}
+
+.iphone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .layout {
+    position: relative;
+    margin-bottom: em(1);
+    margin-right: em(0.5);
+    width: calc(100% - em(22));
+    height: calc(100% - em(20));
+    color: var(--foreground);
+    background: var(--background);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--base-radius);
+    overflow: hidden;
+  }
+
+  .screen {
+    position: relative;
+    padding-top: var(--safearea-top);
+    padding-bottom: var(--safearea-bottom);
+    padding-left: var(--safearea-inline);
+    padding-right: var(--safearea-inline);
+    height: 100%;
+  }
+}
