@@ -13,7 +13,7 @@ export default new Vuex.Store({
     device: {
       locked: true,
       theme: "dark",
-      scale: 2.5,
+      scale: 1.63,
       fontFamily: "SF Pro Display",
       background: bg1,
     },

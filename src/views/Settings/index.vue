@@ -29,7 +29,7 @@ export default {
     ...mapState(["status", "device"]),
 
     scaledValue() {
-      return ((this.device.scale - 2) / (2.8 - 2)) * 100;
+      return ((this.device.scale - 1.63) / (2.5 - 1.63)) * 100;
     },
   },
   methods: {},
@@ -40,8 +40,8 @@ export default {
 
     // Update the CSS custom property dynamically within the range
     fontRange.addEventListener("input", (event) => {
-      let min = 2; // vh
-      let max = 2.8; // vh
+      let min = 1.63; // vh
+      let max = 2.5; // vh
 
       // Calculate the new font size within the range [1, 3]
       let value =
