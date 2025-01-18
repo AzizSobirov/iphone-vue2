@@ -11,7 +11,7 @@ const backgrounds = [bg1];
 export default new Vuex.Store({
   state: {
     device: {
-      locked: false,
+      locked: true,
       theme: "dark",
       scale: 2.5,
       fontFamily: "SF Pro Display",
