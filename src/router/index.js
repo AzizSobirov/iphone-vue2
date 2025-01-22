@@ -14,8 +14,19 @@ const routes = [
       },
       {
         path: "settings",
-        name: "settings",
         component: () => import("../views/Settings/index.vue"),
+        children: [
+          {
+            path: "",
+            name: "settings",
+            component: () => import("../views/Settings/main.vue"),
+          },
+          {
+            path: "wallpapers",
+            name: "settings-wallpapers",
+            component: () => import("../views/Settings/wallpapers.vue"),
+          },
+        ],
       },
     ],
   },

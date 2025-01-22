@@ -140,7 +140,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_mixins.scss";
+@use "@/assets/scss/_mixins.scss" as *;
 
 .screen {
   display: flex;
@@ -153,11 +153,12 @@ export default {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: em(20) em(5);
+  gap: em(20);
 }
 
 .app {
   cursor: pointer;
+  width: em(38);
   display: flex;
   flex-direction: column;
   align-items: center;

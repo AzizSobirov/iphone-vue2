@@ -2,7 +2,7 @@
   <div
     class="screen"
     :style="{
-      backgroundImage: `url(${device.background})`,
+      backgroundImage: `url(${device.wallpaper})`,
     }"
     @mousedown="handleMouseDown"
     @mouseup="handleMouseUp"
@@ -238,7 +238,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_mixins.scss";
+@use "@/assets/scss/_mixins.scss" as *;
 
 .screen {
   position: absolute;

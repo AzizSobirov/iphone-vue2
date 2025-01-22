@@ -1,5 +1,9 @@
-// SCSS function to use the CSS variable for base font size
-@function em($px) {
-  $remValue: ($px / 16) + em;
-  @return $remValue;
+@use "sass:math";
+
+@function em($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + em;
+  } @else {
+    @return "Don't use units when using the em() function; only numbers.";
+  }
 }

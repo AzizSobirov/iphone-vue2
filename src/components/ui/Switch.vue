@@ -27,12 +27,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_mixins.scss";
+@use "@/assets/scss/_mixins.scss" as *;
 
 .switch {
   position: relative;
   width: em(21);
   height: em(12);
+  cursor: pointer;
 
   input[type="checkbox"] {
     display: none;

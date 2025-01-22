@@ -131,7 +131,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/scss/_mixins.scss";
+@use "@/assets/scss/_mixins.scss" as *;
 
 .statusbar {
   position: absolute;
