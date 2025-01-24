@@ -48,7 +48,7 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { playSound } from "@/assets/composables/useMe";
+import { playSound } from "@/composables/useMe";
 import { Slider, Switch } from "@/components/ui";
 
 import simIcon from "./img/sim.svg";
@@ -195,6 +195,7 @@ export default {
 }
 
 .section {
+  cursor: pointer;
   padding: em(5);
   width: 100%;
   background: #fff;

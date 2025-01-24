@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { playSound } from "@/assets/composables/useMe";
+import { playSound } from "@/composables/useMe";
 
 import cameraSvg from "./img/camera.svg";
 import gallerySvg from "./img/gallery.svg";

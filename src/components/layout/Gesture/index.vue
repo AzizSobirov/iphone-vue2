@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { playSound } from "@/assets/composables/useMe";
+import { playSound } from "@/composables/useMe";
 
 export default {
   name: "Gesture",

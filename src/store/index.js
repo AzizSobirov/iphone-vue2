@@ -47,6 +47,10 @@ export default new Vuex.Store({
       state.device.scale = parseFloat(value);
       localStorage.setItem("iphone", JSON.stringify(state.device));
     },
+    setWallpaper(state, value) {
+      state.device.wallpaper = value;
+      localStorage.setItem("iphone", JSON.stringify(state.device));
+    },
   },
   actions: {},
 });

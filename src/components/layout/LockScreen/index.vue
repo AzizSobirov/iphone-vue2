@@ -151,7 +151,7 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { playSound } from "@/assets/composables/useMe";
+import { playSound } from "@/composables/useMe";
 
 export default {
   name: "LockScreen",
