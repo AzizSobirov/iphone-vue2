@@ -123,15 +123,15 @@ export default {
 @use "@/assets/scss/_mixins.scss" as *;
 
 .header {
-  padding-top: em(20);
+  padding-top: rem(20);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: em(10);
+  gap: rem(10);
 
   &-btn {
-    width: em(20);
-    height: em(20);
+    width: rem(20);
+    height: rem(20);
     background: var(--foreground-light);
     border-radius: 50%;
     display: flex;
@@ -139,28 +139,28 @@ export default {
     justify-content: center;
 
     svg {
-      margin-right: em(1.5);
-      width: em(6);
-      height: em(8);
+      margin-right: rem(1.5);
+      width: rem(6);
+      height: rem(8);
     }
   }
 
   span {
-    font-size: em(16);
+    font-size: rem(16);
     font-weight: 700;
   }
 }
 
 .ringtones {
-  padding-bottom: em(50);
+  padding-bottom: rem(50);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: em(10);
+  gap: rem(10);
 
   &-label {
-    font-size: em(8);
+    font-size: rem(8);
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
@@ -175,21 +175,21 @@ export default {
 
   &__item {
     cursor: pointer;
-    padding: em(8);
+    padding: rem(8);
     width: 100%;
-    border-radius: em(6);
+    border-radius: rem(6);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: em(10);
+    gap: rem(10);
 
     &.active .icon img {
       display: flex;
     }
 
     .icon {
-      width: em(15);
-      height: em(15);
+      width: rem(15);
+      height: rem(15);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -203,7 +203,7 @@ export default {
     }
 
     span {
-      font-size: em(10);
+      font-size: rem(10);
       font-weight: 500;
     }
   }

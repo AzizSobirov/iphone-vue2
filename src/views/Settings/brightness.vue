@@ -139,15 +139,15 @@ export default {
 @use "@/assets/scss/_mixins.scss" as *;
 
 .header {
-  padding-top: em(20);
+  padding-top: rem(20);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: em(10);
+  gap: rem(10);
 
   &-btn {
-    width: em(20);
-    height: em(20);
+    width: rem(20);
+    height: rem(20);
     background: var(--foreground-light);
     border-radius: 50%;
     display: flex;
@@ -155,51 +155,51 @@ export default {
     justify-content: center;
 
     svg {
-      margin-right: em(1.5);
-      width: em(6);
-      height: em(8);
+      margin-right: rem(1.5);
+      width: rem(6);
+      height: rem(8);
     }
   }
 
   span {
-    font-size: em(16);
+    font-size: rem(16);
     font-weight: 700;
   }
 }
 
 .themes {
-  margin-bottom: em(10);
+  margin-bottom: rem(10);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: em(18);
+  gap: rem(18);
 
   label {
     cursor: pointer;
     position: relative;
-    width: em(70);
+    width: rem(70);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: em(5);
+    gap: rem(5);
 
     img {
-      height: em(115);
+      height: rem(115);
       width: 100%;
       object-fit: cover;
-      border-radius: em(10);
+      border-radius: rem(10);
     }
 
     .radio {
       position: absolute;
-      top: em(5);
-      right: em(5);
+      top: rem(5);
+      right: rem(5);
     }
 
     span {
       text-align: center;
-      font-size: em(10);
+      font-size: rem(10);
       font-weight: 500;
       width: 100%;
     }

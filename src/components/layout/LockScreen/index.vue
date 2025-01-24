@@ -256,14 +256,14 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: em(10);
+  gap: rem(10);
 }
 
 .lock-icon {
-  margin-top: em(20);
-  margin-bottom: em(10);
-  width: em(11);
-  height: em(14);
+  margin-top: rem(20);
+  margin-bottom: rem(10);
+  width: rem(11);
+  height: rem(14);
 
   svg {
     width: 100%;
@@ -272,30 +272,30 @@ export default {
 }
 
 .date {
-  font-size: em(16);
+  font-size: rem(16);
   line-height: 1;
 }
 
 .time {
-  font-size: em(60);
+  font-size: rem(60);
   font-weight: 500;
   line-height: 1;
 }
 
 .actions {
   margin-top: auto;
-  margin-bottom: em(15);
-  padding: 0 em(5);
+  margin-bottom: rem(15);
+  padding: 0 rem(5);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: em(10);
+  gap: rem(10);
 }
 
 .action {
-  width: em(44);
-  height: em(44);
+  width: rem(44);
+  height: rem(44);
   background: rgba($color: #000000, $alpha: 0.5);
   border-radius: 50%;
   display: flex;
@@ -304,13 +304,13 @@ export default {
   cursor: pointer;
 
   &:nth-child(1) svg {
-    width: em(8);
-    height: em(21);
+    width: rem(8);
+    height: rem(21);
   }
 
   &:nth-child(2) svg {
-    width: em(18);
-    height: em(14);
+    width: rem(18);
+    height: rem(14);
   }
 }
 

@@ -149,31 +149,31 @@ export default {
 }
 
 .apps {
-  margin-top: em(18);
+  margin-top: rem(18);
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: em(20);
+  gap: rem(20);
 }
 
 .app {
   cursor: pointer;
-  width: em(38);
+  width: rem(38);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: em(5);
+  gap: rem(5);
 
   img {
-    width: em(38);
-    height: em(38);
+    width: rem(38);
+    height: rem(38);
     object-fit: cover;
   }
 
   span {
     color: #fff;
-    font-size: em(10);
+    font-size: rem(10);
     font-weight: 400;
     white-space: nowrap;
   }
@@ -181,16 +181,16 @@ export default {
 
 .tabs {
   margin-top: auto;
-  margin-bottom: em(4);
-  padding: em(12);
+  margin-bottom: rem(4);
+  padding: rem(12);
   width: 100%;
-  backdrop-filter: blur(em(12));
+  backdrop-filter: blur(rem(12));
   background: rgba(245, 248, 255, 0.21);
-  border-radius: em(22);
+  border-radius: rem(22);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: em(5);
+  gap: rem(5);
 }
 
 .dark .tabs {
@@ -200,8 +200,8 @@ export default {
 .tab {
   position: relative;
   cursor: pointer;
-  width: em(38);
-  height: em(38);
+  width: rem(38);
+  height: rem(38);
 
   img {
     width: 100%;

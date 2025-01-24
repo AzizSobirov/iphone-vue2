@@ -1,5 +1,5 @@
 <template>
-  <div class="gesture">
+  <div class="gesture" :style="getStyle">
     <div class="indicator" @click="backToHome"></div>
   </div>
 </template>
@@ -9,6 +9,13 @@ import { playSound } from "@/composables/useMe";
 
 export default {
   name: "Gesture",
+  computed: {
+    getStyle() {
+      return {
+        "--foreground": this.$route.meta.statusbar == "white" ? "#fff" : "",
+      };
+    },
+  },
   methods: {
     backToHome() {
       if (this.$route.name !== "home") {
@@ -28,7 +35,7 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 99;
-  height: em(16);
+  height: rem(16);
   width: 100%;
   display: flex;
   align-items: center;
@@ -36,8 +43,8 @@ export default {
 
   .indicator {
     position: relative;
-    width: em(114);
-    height: em(3);
+    width: rem(114);
+    height: rem(3);
     background: var(--foreground);
     border-radius: 9999px;
     cursor: pointer;
@@ -50,7 +57,7 @@ export default {
       left: 0;
       transform: translateY(-50%);
       width: 100%;
-      height: em(14);
+      height: rem(14);
     }
   }
 }

@@ -31,6 +31,13 @@ const ringtones = [
   },
 ];
 
+const gallery = [
+  {
+    id: 1,
+    src: "/img/gallery/1.png",
+  },
+];
+
 const saveSettings = (device) => {
   localStorage.setItem("iphone", JSON.stringify(device));
 };
@@ -43,12 +50,12 @@ export default new Vuex.Store({
       notifications: false,
       screen_lock: false,
       theme: "light",
-      scale: 1.63, // vh
+      fontSize: 16,
       fontFamily: "SF Pro Display",
       wallpaper: wallpapers[0],
       ringtone: ringtones[0],
       volume: 100,
-      brightness: 50,
+      brightness: 100,
     },
 
     profile: {
@@ -57,8 +64,8 @@ export default new Vuex.Store({
       number: "+123456789",
     },
 
-    wallpapers: wallpapers,
-    ringtones: ringtones,
+    wallpapers,
+    ringtones,
   },
   getters: {},
   mutations: {
@@ -83,8 +90,8 @@ export default new Vuex.Store({
       state.device.screen_lock = value;
       saveSettings(state.device);
     },
-    changeScale(state, value) {
-      state.device.scale = parseFloat(value);
+    setSize(state, value) {
+      state.device.fontSize = parseFloat(value);
       saveSettings(state.device);
     },
     setWallpaper(state, value) {

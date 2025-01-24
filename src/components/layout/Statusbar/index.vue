@@ -1,5 +1,5 @@
 <template>
-  <div class="statusbar">
+  <div class="statusbar" :style="getStyle">
     <div class="left">
       <div class="time">{{ currentTime }}</div>
       <div class="notifications">
@@ -104,13 +104,12 @@ export default {
       currentTime: "",
     };
   },
-  computed: {},
-  mounted() {
-    this.getTime();
-
-    setInterval(() => {
-      this.getTime();
-    }, 60000);
+  computed: {
+    getStyle() {
+      return {
+        "--foreground": this.$route.meta.statusbar == "white" ? "#fff" : "",
+      };
+    },
   },
   methods: {
     getTime() {
@@ -127,6 +126,13 @@ export default {
       this.currentTime = hours + ":" + minutes;
     },
   },
+  mounted() {
+    this.getTime();
+
+    setInterval(() => {
+      this.getTime();
+    }, 60000);
+  },
 };
 </script>
 
@@ -138,25 +144,25 @@ export default {
   top: 0;
   left: 0;
   z-index: 99;
-  padding: 0 em(24);
-  height: em(30);
+  padding: 0 rem(24);
+  height: rem(30);
   width: 100%;
   color: var(--foreground);
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: em(5);
+  gap: rem(5);
 }
 
 .left {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: em(4);
+  gap: rem(4);
 
   .time {
-    font-size: em(12);
+    font-size: rem(12);
     font-weight: 500;
   }
 }
@@ -165,17 +171,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: em(3);
+  gap: rem(3);
 
   .notifications-item {
-    width: em(12);
-    height: em(12);
+    width: rem(12);
+    height: rem(12);
     display: flex;
     align-items: center;
     justify-content: center;
 
     svg {
-      margin-bottom: em(1);
+      margin-bottom: rem(1);
       width: 100%;
       height: 100%;
     }
@@ -184,11 +190,11 @@ export default {
 
 .camera {
   position: absolute;
-  top: em(5);
+  top: rem(5);
   left: 50%;
   transform: translateX(-50%);
-  width: em(74);
-  height: em(22);
+  width: rem(74);
+  height: rem(22);
   background: #000;
   border-radius: 9999px;
   pointer-events: none;
@@ -198,21 +204,21 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: em(2);
+  gap: rem(2);
 
   .signal {
-    width: em(15);
-    height: em(12);
+    width: rem(15);
+    height: rem(12);
   }
 
   .wifi {
-    width: em(12);
-    height: em(12);
+    width: rem(12);
+    height: rem(12);
   }
 
   .battery {
-    width: em(23);
-    height: em(12);
+    width: rem(23);
+    height: rem(12);
   }
 
   .signal,

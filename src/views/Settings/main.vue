@@ -37,11 +37,11 @@
 
     <Slider
       label="РАЗМЕР ТЕЛЕФОНА"
-      :value="parseFloat(device.scale)"
-      :min="1.5"
-      :max="2.5"
-      :step="0.01"
-      @update="changeScale"
+      :value="parseFloat(device.fontSize)"
+      :min="16"
+      :max="28"
+      :step="0.1"
+      @update="setSize"
     />
   </div>
 </template>
@@ -130,7 +130,7 @@ export default {
   },
   methods: {
     ...mapMutations([
-      "changeScale",
+      "setSize",
       "toggleNotifications",
       "toggleAirplaneMode",
       "toggleScreenLock",
@@ -149,8 +149,8 @@ export default {
 @use "@/assets/scss/_mixins.scss" as *;
 
 .title {
-  margin-top: em(15);
-  font-size: em(20);
+  margin-top: rem(15);
+  font-size: rem(20);
   font-weight: 700;
 }
 
@@ -159,11 +159,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: em(10);
+  gap: rem(10);
 
   &-avatar {
-    width: em(32);
-    height: em(32);
+    width: rem(32);
+    height: rem(32);
 
     img {
       width: 100%;
@@ -177,17 +177,17 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: em(4);
+    gap: rem(4);
   }
 
   &-name {
-    font-size: em(12);
+    font-size: rem(12);
     font-weight: 600;
   }
 
   &-number {
     color: var(--text-muted);
-    font-size: em(10);
+    font-size: rem(10);
     font-weight: 500;
   }
 }
@@ -197,34 +197,34 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: em(6);
+  gap: rem(6);
 }
 
 .section {
   cursor: pointer;
-  padding: em(5);
+  padding: rem(5);
   width: 100%;
   background: #fff;
-  border-radius: em(7);
+  border-radius: rem(7);
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: em(8);
+  gap: rem(8);
 
   &-icon {
-    width: em(20);
-    height: em(20);
+    width: rem(20);
+    height: rem(20);
   }
 
   &-name {
-    font-size: em(10);
+    font-size: rem(10);
     font-weight: 500;
   }
 
   &-angle {
     margin-left: auto;
-    width: em(13);
-    height: em(13);
+    width: rem(13);
+    height: rem(13);
   }
 
   .switch {
@@ -238,6 +238,6 @@ export default {
 
 .slider {
   margin-top: auto;
-  margin-bottom: em(15);
+  margin-bottom: rem(15);
 }
 </style>

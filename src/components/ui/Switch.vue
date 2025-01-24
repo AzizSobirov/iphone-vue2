@@ -35,8 +35,8 @@ export default {
 
 .switch {
   position: relative;
-  width: em(21);
-  height: em(12);
+  width: rem(21);
+  height: rem(12);
   cursor: pointer;
 
   input[type="checkbox"] {
@@ -50,8 +50,8 @@ export default {
   }
 
   input:checked + .knob:before {
-    left: em(10);
-    // box-shadow: em(-2) 0 em(4) 0 rgba(0, 0, 0, 0.25);
+    left: rem(10);
+    // box-shadow: rem(-2) 0 rem(4) 0 rgba(0, 0, 0, 0.25);
   }
 
   .knob {
@@ -68,11 +68,11 @@ export default {
   .knob:before {
     position: absolute;
     content: "";
-    left: em(1);
+    left: rem(1);
     top: 50%;
     transform: translateY(-50%);
-    width: em(10);
-    height: em(10);
+    width: rem(10);
+    height: rem(10);
     background-color: #fff;
     box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.15);
     border-radius: 50%;

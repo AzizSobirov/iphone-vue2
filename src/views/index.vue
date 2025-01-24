@@ -5,7 +5,6 @@
       dark: device.theme === 'dark',
     }"
     :style="{
-      fontSize: device.scale + 'vh',
       fontFamily: `${device.fontFamily}, sans-serif`,
       filter: `brightness(${device.brightness}%)`,
     }"
@@ -51,13 +50,27 @@ export default {
 
       this.setVolume(newVolume);
     },
+
+    updateFontSize() {
+      const calculatedSize = (this.device.fontSize / 1080) * window.innerHeight;
+      document.documentElement.style.fontSize = `${calculatedSize}px`;
+    },
   },
   mounted() {
     this.getSettings();
     window.addEventListener("keydown", this.handleKeydown);
+
+    this.updateFontSize();
+    window.addEventListener("resize", this.updateFontSize);
   },
   beforeDestroy() {
     window.removeEventListener("keydown", this.handleKeydown);
+    window.removeEventListener("resize", this.updateFontSize);
+  },
+  watch: {
+    "device.fontSize"(value) {
+      this.updateFontSize();
+    },
   },
 };
 </script>

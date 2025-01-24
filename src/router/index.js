@@ -10,8 +10,33 @@ const routes = [
       {
         path: "",
         name: "home",
+        meta: { statusbar: "white" },
         component: () => import("../views/Home/index.vue"),
       },
+      {
+        path: "camera",
+        name: "camera",
+        meta: { statusbar: "white" },
+        component: () => import("../views/Camera/index.vue"),
+      },
+      {
+        path: "gallery",
+        meta: { statusbar: "white" },
+        component: () => import("../views/Gallery/index.vue"),
+        children: [
+          {
+            path: "",
+            name: "gallery",
+            component: () => import("../views/Gallery/main.vue"),
+          },
+          {
+            path: ":id",
+            name: "gallery-media",
+            component: () => import("../views/Gallery/[id].vue"),
+          },
+        ],
+      },
+
       {
         path: "settings",
         component: () => import("../views/Settings/index.vue"),

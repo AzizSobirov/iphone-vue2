@@ -56,6 +56,22 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Gilroy";
+  src: url("../fonts/Gilroy-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("../fonts/Gilroy-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -71,8 +87,8 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: em(280);
-  height: em(568);
+  width: rem(280);
+  height: rem(568);
   font-family: "SF Pro Display", sans-serif;
   background: url("../img/bg.png") center/contain no-repeat;
   user-select: none;
@@ -102,10 +118,10 @@ body {
 }
 
 .iphone {
-  --safearea-top: 1.875em;
-  --safearea-bottom: 1em;
-  --safearea-inline: 1em;
-  --base-radius: 2.375em;
+  --safearea-top: 1.875rem;
+  --safearea-bottom: 1rem;
+  --safearea-inline: 1rem;
+  --base-radius: 2.375rem;
   --transition-ease: 0.25s ease-in-out;
 
   --primary: #0a83fb;
@@ -118,7 +134,7 @@ body {
 .iphone.dark {
   --primary: #0a83fb;
 
-  --background: #000000;
+  --background: #060606;
   --foreground: #fff;
   --foreground-light: #ffffff20;
   --text-muted: #5b5a61;
@@ -131,10 +147,10 @@ body {
 
   .layout {
     position: relative;
-    margin-bottom: em(1);
-    margin-right: em(0.5);
-    width: calc(100% - em(22));
-    height: calc(100% - em(20));
+    margin-bottom: rem(1);
+    margin-right: rem(0.5);
+    width: calc(100% - rem(22));
+    height: calc(100% - rem(20));
     color: var(--foreground);
     background: var(--background);
     background-size: cover;
@@ -151,6 +167,7 @@ body {
     padding-left: var(--safearea-inline);
     padding-right: var(--safearea-inline);
     height: 100%;
+    width: 100%;
     overflow: auto;
 
     &::-webkit-scrollbar {

@@ -66,10 +66,10 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: em(8);
+  gap: rem(8);
 
   &-label {
-    font-size: em(8);
+    font-size: rem(8);
     font-weight: 600;
     line-height: 1;
     text-transform: uppercase;
@@ -77,20 +77,20 @@ export default {
 
   &-range {
     position: relative;
-    padding: 0 em(8);
+    padding: 0 rem(8);
     width: 100%;
-    height: em(28);
+    height: rem(28);
     background: #12121410;
-    border-radius: em(5);
+    border-radius: rem(5);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: em(6);
+    gap: rem(6);
     --percent: 30%;
 
     svg {
-      width: em(14);
-      height: em(14);
+      width: rem(14);
+      height: rem(14);
     }
   }
 
@@ -106,7 +106,7 @@ export default {
       content: "";
       position: absolute;
       left: 0;
-      height: em(2);
+      height: rem(2);
       width: 100%;
       background: linear-gradient(
         to right,
@@ -121,7 +121,7 @@ export default {
     position: relative;
     z-index: 2;
     width: 100%;
-    font-size: em(15);
+    font-size: rem(15);
     border: none;
     outline: none;
     background: transparent;
@@ -136,8 +136,8 @@ export default {
 
     &::-webkit-slider-thumb {
       appearance: none;
-      width: em(15);
-      height: em(15);
+      width: rem(15);
+      height: rem(15);
       border-radius: 50%;
       background-color: #fff;
       cursor: pointer;
