@@ -1,15 +1,13 @@
 <template>
   <label class="switch">
-    <input
-      type="checkbox"
-      :checked="checked"
-      @change="$emit('change', $event)"
-    />
+    <input type="checkbox" :checked="checked" @change="change" />
     <span class="knob"></span>
   </label>
 </template>
 
 <script>
+import { playSound } from "@/composables/useMe";
+
 export default {
   name: "TheSwitch",
   props: {
@@ -22,7 +20,13 @@ export default {
       default: false,
     },
   },
-  // emits: ["update:change"],
+  methods: {
+    change($event) {
+      if (this.disabled) return;
+      this.$emit("change", $event.target.checked);
+      playSound();
+    },
+  },
 };
 </script>
 

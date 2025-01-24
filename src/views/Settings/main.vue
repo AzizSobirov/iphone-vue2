@@ -29,8 +29,8 @@
 
         <USwitch
           v-if="section.action"
-          :checked="device.theme == 'light'"
-          @change="($event) => section.action($event.target.checked)"
+          :checked="device[section.key]"
+          @change="(value) => section.action(value)"
         />
       </div>
     </div>
@@ -70,48 +70,56 @@ export default {
           icon: simIcon,
           name: "Извлечь SIM",
           link: "",
+          key: null,
           action: null,
         },
         {
           icon: pilotIcon,
           name: "Авиарежим",
           link: null,
-          action: this.toggleTheme,
+          key: "airplane_mode",
+          action: this.toggleAirplaneMode,
         },
         {
           icon: themesIcon,
           name: "Обои",
           link: "/wallpapers",
+          key: null,
           action: null,
         },
         {
           icon: soundsIcon,
           name: "Звуки",
-          link: "",
+          link: "/ringtones",
+          key: null,
           action: null,
         },
         {
           icon: notificationsIcon,
           name: "Уведомления",
           link: null,
-          action: this.toggleTheme,
+          key: "notifications",
+          action: this.toggleNotifications,
         },
         {
           icon: lockIcon,
           name: "Экран блокировки",
           link: null,
-          action: this.toggleTheme,
+          key: "screen_lock",
+          action: this.toggleScreenLock,
         },
         {
           icon: brightnessIcon,
           name: "Экран и яркость",
           link: "/brightness",
+          key: null,
           action: null,
         },
         {
           icon: deviceIcon,
           name: "Об устройстве",
           link: "",
+          key: null,
           action: null,
         },
       ],
@@ -121,20 +129,18 @@ export default {
     ...mapState(["device", "profile"]),
   },
   methods: {
-    ...mapMutations(["changeScale", "toggleTheme"]),
+    ...mapMutations([
+      "changeScale",
+      "toggleNotifications",
+      "toggleAirplaneMode",
+      "toggleScreenLock",
+    ]),
     openSection(link) {
       if (link) {
         this.$router.push(`/settings${link}`);
         playSound();
       }
     },
-  },
-  mounted() {
-    // this.changeScale({
-    //   target: {
-    //     value: 2.75,
-    //   },
-    // });
   },
 };
 </script>

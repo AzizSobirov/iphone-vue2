@@ -41,6 +41,7 @@ export default {
     background: var(--foreground);
     border-radius: 9999px;
     cursor: pointer;
+    mix-blend-mode: difference;
 
     &::before {
       content: "";

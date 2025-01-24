@@ -26,7 +26,22 @@ const routes = [
             name: "settings-wallpapers",
             component: () => import("../views/Settings/wallpapers.vue"),
           },
+          {
+            path: "ringtones",
+            name: "settings-ringtones",
+            component: () => import("../views/Settings/ringtones.vue"),
+          },
+          {
+            path: "brightness",
+            name: "settings-brightness",
+            component: () => import("../views/Settings/brightness.vue"),
+          },
         ],
+      },
+      {
+        path: "navigator",
+        name: "navigator",
+        component: () => import("../views/Navigator/index.vue"),
       },
     ],
   },

@@ -8,6 +8,7 @@
   >
     <div v-if="label" class="slider-label">{{ label }}</div>
     <div class="slider-range">
+      <slot name="left"></slot>
       <div class="slider-inp" :style="{ '--percent': `${getPercent(value)}%` }">
         <input
           type="range"
@@ -18,6 +19,7 @@
           @input="$emit('update', $event.target.value)"
         />
       </div>
+      <slot name="right"></slot>
     </div>
   </div>
 </template>
@@ -80,11 +82,16 @@ export default {
     height: em(28);
     background: #12121410;
     border-radius: em(5);
-
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: em(6);
     --percent: 30%;
+
+    svg {
+      width: em(14);
+      height: em(14);
+    }
   }
 
   &-inp {

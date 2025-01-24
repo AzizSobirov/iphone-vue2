@@ -2,65 +2,17 @@
 
 @font-face {
   font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-HeavyItalic.woff2") format("woff2");
-  font-weight: 900;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
   src: url("../fonts/SFProDisplay-Light.woff2") format("woff2");
-  font-weight: 200;
+  font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-LightItalic.woff2") format("woff2");
-  font-weight: 200;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-Heavy.woff2") format("woff2");
-  font-weight: 900;
+  src: url("../fonts/SFProDisplay-Regular.woff2") format("woff2");
+  font-weight: normal;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-ThinItalic.woff2") format("woff2");
-  font-weight: 100;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-Black.woff2") format("woff2");
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-Bold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-MediumItalic.woff2") format("woff2");
-  font-weight: 500;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -82,49 +34,25 @@
 
 @font-face {
   font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-Thin.woff2") format("woff2");
-  font-weight: 100;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-RegularItalic.woff2") format("woff2");
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-SemiboldItalic.woff2") format("woff2");
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-BoldItalic.woff2") format("woff2");
+  src: url("../fonts/SFProDisplay-Bold.woff2") format("woff2");
   font-weight: bold;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-Regular.woff2") format("woff2");
-  font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "SF Pro Display";
-  src: url("../fonts/SFProDisplay-BlackItalic.woff2") format("woff2");
-  font-weight: 900;
-  font-style: italic;
+  font-family: "Uber Move";
+  src: url("../fonts/UberMove-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Uber Move";
+  src: url("../fonts/UberMove-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -162,23 +90,37 @@ body {
   text-decoration: none;
 }
 
+.iphone input,
+.iphone textarea,
+.iphone button {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  background: none;
+  border: none;
+  outline: none;
+}
+
 .iphone {
   --safearea-top: 1.875em;
   --safearea-bottom: 1em;
   --safearea-inline: 1em;
   --base-radius: 2.375em;
+  --transition-ease: 0.25s ease-in-out;
 
-  --primary: red;
+  --primary: #0a83fb;
   --background: #f5f8ff;
   --foreground: #1c1c1e;
+  --foreground-light: #1c1c1e20;
   --text-muted: #5b5a61;
 }
 
 .iphone.dark {
-  --primary: blue;
+  --primary: #0a83fb;
 
   --background: #000000;
   --foreground: #fff;
+  --foreground-light: #ffffff20;
   --text-muted: #5b5a61;
 }
 
@@ -209,6 +151,11 @@ body {
     padding-left: var(--safearea-inline);
     padding-right: var(--safearea-inline);
     height: 100%;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 }
 
