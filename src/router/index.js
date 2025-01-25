@@ -43,6 +43,12 @@ const routes = [
       },
 
       {
+        path: "radio",
+        name: "radio",
+        component: () => import("../views/Radio/index.vue"),
+      },
+
+      {
         path: "news",
         component: () => import("../views/News/layout.vue"),
         children: [
