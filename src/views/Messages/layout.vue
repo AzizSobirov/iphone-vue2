@@ -1,5 +1,5 @@
 <template>
-  <div class="settings">
+  <div class="layout">
     <transition name="inner-transition" mode="out-in">
       <router-view />
     </transition>
@@ -9,17 +9,11 @@
 <style lang="scss" scoped>
 @use "@/assets/scss/_mixins.scss" as *;
 
-.settings {
+.layout {
   height: 100%;
   width: 100%;
   background: var(--background);
   border-radius: var(--base-radius);
-}
-
-.screen {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: rem(16);
+  overflow: hidden;
 }
 </style>

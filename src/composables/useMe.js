@@ -1,9 +1,13 @@
 import clickMp3 from "@/assets/sounds/click.mp3";
 import unlockMp3 from "@/assets/sounds/unlock.mp3";
 import cameraMp3 from "@/assets/sounds/camera.mp3";
+import store from "@/store";
 
 export const playSound = (sound = "click") => {
+  const deviceState = store.state.device;
+
   const audio = new Audio();
+  audio.volume = deviceState.volume / 100;
 
   if (!audio) return;
 

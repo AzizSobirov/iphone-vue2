@@ -37,6 +37,12 @@ const routes = [
       },
 
       {
+        path: "navigator",
+        name: "navigator",
+        component: () => import("../views/Navigator/index.vue"),
+      },
+
+      {
         path: "news",
         component: () => import("../views/News/layout.vue"),
         children: [
@@ -96,10 +102,22 @@ const routes = [
           },
         ],
       },
+
       {
-        path: "navigator",
-        name: "navigator",
-        component: () => import("../views/Navigator/index.vue"),
+        path: "messages",
+        component: () => import("../views/Messages/layout.vue"),
+        children: [
+          {
+            path: "",
+            name: "messages",
+            component: () => import("../views/Messages/index.vue"),
+          },
+          {
+            path: ":id",
+            name: "messages-message",
+            component: () => import("../views/Messages/[id].vue"),
+          },
+        ],
       },
     ],
   },
