@@ -21,13 +21,12 @@ const routes = [
       },
       {
         path: "gallery",
-        meta: { statusbar: "white" },
-        component: () => import("../views/Gallery/index.vue"),
+        component: () => import("../views/Gallery/layout.vue"),
         children: [
           {
             path: "",
             name: "gallery",
-            component: () => import("../views/Gallery/main.vue"),
+            component: () => import("../views/Gallery/index.vue"),
           },
           {
             path: ":id",
@@ -39,13 +38,12 @@ const routes = [
 
       {
         path: "news",
-        meta: { statusbar: "white" },
-        component: () => import("../views/News/index.vue"),
+        component: () => import("../views/News/layout.vue"),
         children: [
           {
             path: "",
             name: "news",
-            component: () => import("../views/News/main.vue"),
+            component: () => import("../views/News/index.vue"),
           },
           {
             path: "create",
@@ -56,13 +54,30 @@ const routes = [
       },
 
       {
+        path: "calendar",
+        component: () => import("../views/Calendar/layout.vue"),
+        children: [
+          {
+            path: "",
+            name: "calendar",
+            component: () => import("../views/Calendar/index.vue"),
+          },
+          {
+            path: ":month/:year",
+            name: "calendar-date",
+            component: () => import("../views/Calendar/[date].vue"),
+          },
+        ],
+      },
+
+      {
         path: "settings",
-        component: () => import("../views/Settings/index.vue"),
+        component: () => import("../views/Settings/layout.vue"),
         children: [
           {
             path: "",
             name: "settings",
-            component: () => import("../views/Settings/main.vue"),
+            component: () => import("../views/Settings/index.vue"),
           },
           {
             path: "wallpapers",
