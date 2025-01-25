@@ -12,7 +12,7 @@
     "@vitejs/plugin-vue2": "^2.2.0",
     "chart.js": "^4.4.7",
     "core-js": "^3.8.3",
-    "swiper-vue2": "^1.0.10",
+    "swiper": "^11.2.1",
     "vue": "^2.7.16",
     "vue-chartjs": "^5.3.2",
     "vue-mobile-detection": "^2.0.1",

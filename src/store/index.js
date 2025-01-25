@@ -34,7 +34,43 @@ const ringtones = [
 const gallery = [
   {
     id: 1,
-    src: "/img/gallery/1.png",
+    src: "/img/gallery/1.jpg",
+    time: "12:00",
+  },
+  {
+    id: 2,
+    src: "/img/gallery/2.jpg",
+    time: "11:00",
+  },
+  {
+    id: 3,
+    src: "/img/gallery/3.jpg",
+    time: "12:00",
+  },
+  {
+    id: 4,
+    src: "/img/gallery/4.jpg",
+    time: "13:00",
+  },
+  {
+    id: 1,
+    src: "/img/gallery/1.jpg",
+    time: "12:00",
+  },
+  {
+    id: 2,
+    src: "/img/gallery/2.jpg",
+    time: "11:00",
+  },
+  {
+    id: 3,
+    src: "/img/gallery/3.jpg",
+    time: "12:00",
+  },
+  {
+    id: 4,
+    src: "/img/gallery/4.jpg",
+    time: "13:00",
   },
 ];
 
@@ -66,6 +102,7 @@ export default new Vuex.Store({
 
     wallpapers,
     ringtones,
+    gallery: [...gallery, ...gallery, ...gallery, ...gallery, ...gallery],
   },
   getters: {},
   mutations: {
@@ -114,6 +151,12 @@ export default new Vuex.Store({
       state.device.theme = value;
       state.device.wallpaper = value == "light" ? wallpapers[0] : wallpapers[1];
       saveSettings(state.device);
+    },
+    uploadPhoto(state, value) {
+      state.gallery.push(value);
+    },
+    deletePhoto(state, value) {
+      state.gallery = state.gallery.filter((item) => item.id !== value.id);
     },
   },
   actions: {},

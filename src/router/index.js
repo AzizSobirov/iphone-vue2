@@ -38,6 +38,24 @@ const routes = [
       },
 
       {
+        path: "news",
+        meta: { statusbar: "white" },
+        component: () => import("../views/News/index.vue"),
+        children: [
+          {
+            path: "",
+            name: "news",
+            component: () => import("../views/News/main.vue"),
+          },
+          {
+            path: "create",
+            name: "news-create",
+            component: () => import("../views/News/create.vue"),
+          },
+        ],
+      },
+
+      {
         path: "settings",
         component: () => import("../views/Settings/index.vue"),
         children: [

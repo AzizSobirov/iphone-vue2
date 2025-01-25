@@ -13,31 +13,35 @@
     </div>
 
     <div class="content">
-      <swiper class="types" :slides-per-view="'auto'" :centeredSlides="true">
-        <swiper-slide>
-          <div>Photo</div>
-        </swiper-slide>
-        <swiper-slide>
-          <div>Video</div>
-        </swiper-slide>
-        <swiper-slide>
-          <div>Photo</div>
-        </swiper-slide>
-        <swiper-slide>
-          <div>Photo</div>
-        </swiper-slide>
-        <swiper-slide>
-          <div>Video</div>
-        </swiper-slide>
-        <swiper-slide>
-          <div>Photo</div>
-        </swiper-slide>
-      </swiper>
+      <div class="types">
+        <Swiper :slides-per-view="1" :centeredSlides="true" @swiper="onSwiper">
+          <SwiperSlide>
+            <div @click="slideTo(0)">Photo</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div @click="slideTo(1)">Video</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div @click="slideTo(2)">Photo</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div @click="slideTo(3)">Photo</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div @click="slideTo(4)">Video</div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div @click="slideTo(5)">Photo</div>
+          </SwiperSlide>
+        </Swiper>
+      </div>
 
       <div class="actions">
-        <router-link to="/gallery" class="image">
-          <img v-if="image" :src="image" alt="" />
-        </router-link>
+        <div class="image">
+          <router-link v-if="image" :to="`/gallery/${image.id}`">
+            <img :src="image.src" alt="" />
+          </router-link>
+        </div>
 
         <div class="btn" @click="takePhoto"></div>
 
@@ -64,9 +68,10 @@
 </template>
 
 <script>
+import { mapMutations } from "vuex";
+import { Swiper, SwiperSlide } from "swiper/vue";
 import { playSound } from "@/composables/useMe";
-import { Swiper, SwiperSlide } from "swiper-vue2";
-import "swiper/swiper-bundle.css";
+import "swiper/css";
 
 export default {
   name: "Camera",
@@ -74,6 +79,7 @@ export default {
     return {
       stream: null,
       image: null,
+      swiper: null,
     };
   },
   components: {
@@ -81,6 +87,7 @@ export default {
     SwiperSlide,
   },
   methods: {
+    ...mapMutations(["uploadPhoto"]),
     async startCamera() {
       try {
         // Request access to the camera
@@ -108,7 +115,25 @@ export default {
 
       // Convert the canvas content to a data URL
       const photo = canvas.toDataURL("image/png");
-      this.image = photo;
+
+      this.image = {
+        id: Date.now(),
+        src: photo,
+        time: "12:00",
+      };
+
+      this.uploadPhoto(this.image);
+    },
+
+    onSwiper(swiper) {
+      this.swiper = swiper;
+    },
+    slideTo(index) {
+      if (this.swiper) {
+        this.swiper.slideTo(index);
+      } else {
+        console.error("Swiper instance is not initialized yet.");
+      }
     },
   },
   mounted() {
@@ -208,17 +233,18 @@ export default {
   padding: rem(5) 0;
   width: calc(100% + var(--safearea-inline) * 2);
   background: #000;
-  overflow: visible;
+
+  .swiper {
+    width: rem(50);
+    overflow: visible;
+  }
 
   .swiper-slide {
-    width: fit-content;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    &:not(:last-child) {
-      margin-right: rem(20);
-    }
+    cursor: pointer;
   }
 
   .swiper-slide div {

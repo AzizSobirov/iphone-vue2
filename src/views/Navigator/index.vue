@@ -28,13 +28,8 @@
         >
       </div>
 
-      <swiper
-        v-if="!confirmed"
-        class="drivers"
-        :slides-per-view="'auto'"
-        :space-between="0"
-      >
-        <swiper-slide v-for="(item, index) in drivers" :key="index">
+      <Swiper v-if="!confirmed" class="drivers" :slides-per-view="'auto'">
+        <SwiperSlide v-for="(item, index) in drivers" :key="index">
           <div
             class="driver"
             :class="{ active: item.id == selectedDriver }"
@@ -46,8 +41,8 @@
             </div>
             <img class="driver-image" :src="item.image" alt="" />
           </div>
-        </swiper-slide>
-      </swiper>
+        </SwiperSlide>
+      </Swiper>
 
       <div class="order-confirmed" v-else>
         Водитель по вашему заказу будет у Вас <br />
@@ -65,8 +60,8 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from "swiper-vue2";
-import "swiper/swiper-bundle.css";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
 
 import car from "./img/car.png";
 
@@ -147,7 +142,7 @@ export default {
         this.$refs.loader.style.display = "none"; // Hide after transition
 
         let gesture = document.querySelector(".gesture");
-        gesture.style.setProperty("--foreground", "#252525");
+        gesture && gesture.style.setProperty("--foreground", "#252525");
       });
     }, 3000);
   },
@@ -197,7 +192,6 @@ export default {
     width: 100%;
     height: 100%;
     border: none;
-    filter: invert(1);
   }
 }
 
