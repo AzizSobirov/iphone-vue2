@@ -23,24 +23,33 @@
         </div>
       </div>
       <div class="header__search">
-        <div class="header__search-icon">
-          <svg
-            width="13"
-            height="14"
-            viewBox="0 0 13 14"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M11.375 11.875L8.125 8.625M1.625 5.91667C1.625 6.4146 1.72307 6.90765 1.91362 7.36768C2.10417 7.8277 2.38346 8.24569 2.73555 8.59778C3.08764 8.94987 3.50563 9.22916 3.96566 9.41971C4.42569 9.61026 4.91874 9.70833 5.41667 9.70833C5.9146 9.70833 6.40765 9.61026 6.86768 9.41971C7.3277 9.22916 7.74569 8.94987 8.09778 8.59778C8.44987 8.24569 8.72916 7.8277 8.91971 7.36768C9.11026 6.90765 9.20833 6.4146 9.20833 5.91667C9.20833 5.41874 9.11026 4.92569 8.91971 4.46566C8.72916 4.00563 8.44987 3.58764 8.09778 3.23555C7.74569 2.88346 7.3277 2.60417 6.86768 2.41362C6.40765 2.22307 5.9146 2.125 5.41667 2.125C4.91874 2.125 4.42569 2.22307 3.96566 2.41362C3.50563 2.60417 3.08764 2.88346 2.73555 3.23555C2.38346 3.58764 2.10417 4.00563 1.91362 4.46566C1.72307 4.92569 1.625 5.41874 1.625 5.91667Z"
-              stroke="currentColor"
-              stroke-width="1.08333"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
+        <div class="header__search-inp">
+          <div class="header__search-icon">
+            <svg
+              width="13"
+              height="14"
+              viewBox="0 0 13 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M11.375 11.875L8.125 8.625M1.625 5.91667C1.625 6.4146 1.72307 6.90765 1.91362 7.36768C2.10417 7.8277 2.38346 8.24569 2.73555 8.59778C3.08764 8.94987 3.50563 9.22916 3.96566 9.41971C4.42569 9.61026 4.91874 9.70833 5.41667 9.70833C5.9146 9.70833 6.40765 9.61026 6.86768 9.41971C7.3277 9.22916 7.74569 8.94987 8.09778 8.59778C8.44987 8.24569 8.72916 7.8277 8.91971 7.36768C9.11026 6.90765 9.20833 6.4146 9.20833 5.91667C9.20833 5.41874 9.11026 4.92569 8.91971 4.46566C8.72916 4.00563 8.44987 3.58764 8.09778 3.23555C7.74569 2.88346 7.3277 2.60417 6.86768 2.41362C6.40765 2.22307 5.9146 2.125 5.41667 2.125C4.91874 2.125 4.42569 2.22307 3.96566 2.41362C3.50563 2.60417 3.08764 2.88346 2.73555 3.23555C2.38346 3.58764 2.10417 4.00563 1.91362 4.46566C1.72307 4.92569 1.625 5.41874 1.625 5.91667Z"
+                stroke="currentColor"
+                stroke-width="1.08333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+          <input type="text" v-model="search" placeholder="Поиск" />
         </div>
-        <input type="text" v-model="search" placeholder="Поиск" />
+        <div
+          class="header__search-cancel"
+          :class="{ active: search }"
+          @click="search = ''"
+        >
+          Отменить
+        </div>
       </div>
     </div>
 
@@ -189,19 +198,37 @@ export default {
   }
 
   &__search {
-    padding: rem(8);
     width: 100%;
-    color: #5b5a61;
-    background: var(--foreground-light);
-    border-radius: rem(7);
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: rem(6);
+
+    &-inp {
+      padding: rem(8);
+      width: 100%;
+      background: var(--foreground-light);
+      border-radius: rem(7);
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: rem(6);
+
+      input {
+        width: 100%;
+        color: var(--foreground);
+        font-size: rem(10);
+        font-weight: 500;
+
+        &::placeholder {
+          color: #5b5a61;
+        }
+      }
+    }
 
     &-icon {
       width: rem(13);
       height: rem(13);
+      color: #5b5a61;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -212,9 +239,20 @@ export default {
       }
     }
 
-    input {
+    &-cancel {
+      width: 0;
+      color: var(--primary);
       font-size: rem(10);
-      font-weight: 500;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-ease);
+      opacity: 0;
+
+      &.active {
+        margin-left: rem(8);
+        width: rem(50);
+        opacity: 1;
+      }
     }
   }
 }

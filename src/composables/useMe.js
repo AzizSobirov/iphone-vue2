@@ -1,6 +1,7 @@
 import clickMp3 from "@/assets/sounds/click.mp3";
 import unlockMp3 from "@/assets/sounds/unlock.mp3";
 import cameraMp3 from "@/assets/sounds/camera.mp3";
+import messageSentMp3 from "@/assets/sounds/message-sent.mp3";
 import store from "@/store";
 
 export const playSound = (sound = "click") => {
@@ -19,6 +20,9 @@ export const playSound = (sound = "click") => {
     audio.play();
   } else if (sound === "camera") {
     audio.src = cameraMp3;
+    audio.play();
+  } else if (sound === "message-sent") {
+    audio.src = messageSentMp3;
     audio.play();
   }
 };

@@ -51,12 +51,80 @@
       </template>
     </div>
 
-    <div class="footer"></div>
+    <div class="footer">
+      <form class="form" @submit.prevent="handleSubmit">
+        <label for="file" class="btn btn-file">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 13 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.125 4.33333H8.13042M1.625 8.66666L4.33333 5.95833C4.836 5.47462 5.45567 5.47462 5.95833 5.95833L8.66667 8.66666M7.58333 7.58333L8.125 7.04166C8.62767 6.55796 9.24733 6.55796 9.75 7.04166L11.375 8.66666M1.625 3.25C1.625 2.81902 1.7962 2.4057 2.10095 2.10095C2.4057 1.7962 2.81902 1.625 3.25 1.625H9.75C10.181 1.625 10.5943 1.7962 10.899 2.10095C11.2038 2.4057 11.375 2.81902 11.375 3.25V9.75C11.375 10.181 11.2038 10.5943 10.899 10.899C10.5943 11.2038 10.181 11.375 9.75 11.375H3.25C2.81902 11.375 2.4057 11.2038 2.10095 10.899C1.7962 10.5943 1.625 10.181 1.625 9.75V3.25Z"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+
+          <input type="file" id="file" @change="handleFileUpload" />
+        </label>
+        <div class="btn btn-location">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 13 13"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g clip-path="url(#clip0_70_5424)">
+              <path
+                d="M2.16683 6.49992C2.16683 7.64919 2.62338 8.75139 3.43603 9.56405C4.24869 10.3767 5.35089 10.8333 6.50016 10.8333M2.16683 6.49992C2.16683 5.35065 2.62338 4.24845 3.43603 3.43579C4.24869 2.62313 5.35089 2.16659 6.50016 2.16659M2.16683 6.49992H1.0835M6.50016 10.8333C7.64943 10.8333 8.75164 10.3767 9.56429 9.56405C10.377 8.75139 10.8335 7.64919 10.8335 6.49992M6.50016 10.8333V11.9166M10.8335 6.49992C10.8335 5.35065 10.377 4.24845 9.56429 3.43579C8.75164 2.62313 7.64943 2.16659 6.50016 2.16659M10.8335 6.49992H11.9168M6.50016 2.16659V1.08325M4.87516 6.49992C4.87516 6.9309 5.04637 7.34422 5.35111 7.64897C5.65586 7.95371 6.06919 8.12492 6.50016 8.12492C6.93114 8.12492 7.34447 7.95371 7.64921 7.64897C7.95396 7.34422 8.12516 6.9309 8.12516 6.49992C8.12516 6.06894 7.95396 5.65562 7.64921 5.35087C7.34447 5.04612 6.93114 4.87492 6.50016 4.87492C6.06919 4.87492 5.65586 5.04612 5.35111 5.35087C5.04637 5.65562 4.87516 6.06894 4.87516 6.49992Z"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+            <defs>
+              <clipPath id="clip0_70_5424">
+                <rect width="13" height="13" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </div>
+
+        <div class="form-group">
+          <textarea
+            v-model="text"
+            placeholder="Введите текст"
+            required
+          ></textarea>
+          <button type="submit" class="btn btn-send">
+            <svg
+              width="21"
+              height="21"
+              viewBox="0 0 21 21"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.5 5.375V14.125M10.5 5.375L14 8.875M10.5 5.375L7 8.875"
+                stroke="white"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import { playSound } from "@/composables/useMe";
 import { dateToTime } from "@/composables/useDate";
 
@@ -66,15 +134,11 @@ export default {
     return {
       isScrolled: false,
       message: null,
+      text: "",
     };
   },
   computed: {
     ...mapState(["messages", "profile"]),
-    getMessages() {
-      return this.messages.filter((message) => {
-        return message.name.toLowerCase().includes(this.search.toLowerCase());
-      });
-    },
     dateToTime() {
       return dateToTime;
     },
@@ -100,6 +164,7 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["sendMessage"]),
     goBack() {
       playSound();
       if (window.history.length > 1) {
@@ -117,16 +182,38 @@ export default {
         this.$router.push("/messages");
       }
     },
-    // openMessage(id) {
-    //   playSound();
-    //   this.$router.push(`/messages/${id}`);
-    // },
+
+    handleFileUpload(file) {
+      console.log(file);
+    },
+
+    handleSubmit() {
+      this.message.messages.push({
+        id: this.message.messages.length + 1,
+        type: "text",
+        text: this.text,
+        sender: this.profile.id,
+        date: new Date(),
+      });
+
+      playSound("message-sent");
+      this.text = "";
+
+      this.scrollToBottom();
+    },
+
+    scrollToBottom() {
+      setTimeout(() => {
+        this.$refs.screen.scroll(0, this.$refs.screen.scrollHeight);
+      }, 10);
+    },
     scrollHandler() {
       this.isScrolled = this.$refs.screen.scrollTop > 0;
     },
   },
   mounted() {
     this.getMessage();
+    this.scrollToBottom();
     this.$refs.screen.addEventListener("scroll", this.scrollHandler);
   },
   beforeDestroy() {
@@ -140,6 +227,9 @@ export default {
 
 .screen {
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .header {
@@ -269,11 +359,95 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 2;
+  margin-top: auto;
   padding-top: rem(5);
   padding-bottom: var(--safearea-bottom);
+  padding-left: var(--safearea-inline);
+  padding-right: var(--safearea-inline);
   width: 100%;
   height: rem(50);
   background: rgba(255, 255, 255, 0.41);
   backdrop-filter: blur(16px);
+}
+
+.dark .footer {
+  background: rgba(23, 23, 23, 0.41);
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: rem(5);
+
+  &-group {
+    margin-left: rem(3);
+    padding: rem(3);
+    border: rem(1) solid var(--foreground-light);
+    border-radius: 9999px;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(5);
+  }
+
+  textarea {
+    padding: rem(6);
+    height: rem(24);
+    font-size: rem(10);
+    font-weight: 500;
+    resize: none;
+    flex-grow: 1;
+  }
+}
+
+.btn {
+  min-width: rem(25);
+  width: rem(25);
+  height: rem(25);
+  color: #727272;
+  background: var(--foreground-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-ease);
+  cursor: pointer;
+
+  &:hover {
+    color: #fff;
+    background: var(--primary);
+  }
+
+  svg {
+    width: rem(13);
+    height: rem(14);
+  }
+
+  input[type="file"] {
+    display: none;
+  }
+
+  &-send {
+    min-width: rem(22);
+    width: rem(22);
+    height: rem(22);
+    background: #2ed257;
+
+    &:hover {
+      background: #2ed257;
+    }
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.dark .btn {
+  color: #a8a8aa;
 }
 </style>
