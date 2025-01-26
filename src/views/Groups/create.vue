@@ -11,7 +11,8 @@
     </div>
 
     <div class="content">
-      <img src="./img/group-light.png" alt="" />
+      <img class="img-light" src="./img/group-light.png" alt="" />
+      <img class="img-dark" src="./img/group.png" alt="" />
       <div class="content-title">Приложение Группа</div>
       <p class="content-desc">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -44,8 +45,6 @@
             />
           </svg>
         </div>
-
-        
       </div>
     </transition>
   </div>
@@ -142,6 +141,10 @@ export default {
     height: auto;
   }
 
+  .img-dark {
+    display: none;
+  }
+
   &-title {
     font-size: rem(15);
     font-weight: 700;
@@ -150,6 +153,16 @@ export default {
   &-desc {
     font-size: rem(10);
     line-height: 1.5;
+  }
+}
+
+.dark .content {
+  .img-light {
+    display: none;
+  }
+
+  .img-dark {
+    display: block;
   }
 }
 

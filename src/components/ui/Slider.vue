@@ -110,7 +110,7 @@ export default {
       width: 100%;
       background: linear-gradient(
         to right,
-        #0a83fb 0% var(--percent),
+        var(--primary) 0% var(--percent),
         #cecece var(--percent) 100%
       );
       border-radius: 9999px;
@@ -153,9 +153,43 @@ export default {
   &-inp::before {
     background: linear-gradient(
       to right,
-      #0a83fb 0% var(--percent),
+      var(--primary) 0% var(--percent),
       #424249 var(--percent) 100%
     );
+  }
+}
+
+.slider-radio {
+  .slider-range {
+    padding: 0;
+    background: transparent;
+    gap: rem(10);
+    --primary: #191a23;
+
+    svg {
+      width: rem(16);
+      height: rem(16);
+    }
+  }
+
+  input {
+    &::-webkit-slider-thumb {
+      height: rem(10);
+      width: rem(10);
+      background: #191a23;
+    }
+  }
+}
+
+.dark .slider-radio {
+  .slider-range {
+    --primary: #fff;
+  }
+
+  input {
+    &::-webkit-slider-thumb {
+      border: rem(1.5) solid #fff;
+    }
   }
 }
 </style>

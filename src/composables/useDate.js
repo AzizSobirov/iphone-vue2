@@ -46,3 +46,20 @@ export const getDateDays = (dateString) => {
   // Convert milliseconds to days
   return Math.floor(diffInMs / (1000 * 60 * 60 * 24));
 };
+
+export const formatTime = (seconds, type = "mm:ss") => {
+  const hrs = Math.floor(seconds / 3600);
+  const mins = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+
+  // Add leading zeros if <10
+  const formattedHrs = hrs > 0 ? String(hrs).padStart(2, "0") : "00";
+  const formattedMins = String(mins).padStart(2, "0");
+  const formattedSecs = String(secs).padStart(2, "0");
+
+  if (type === "mm:ss") {
+    return `${formattedMins}:${formattedSecs}`;
+  } else {
+    return `${formattedHrs}:${formattedMins}:${formattedSecs}`;
+  }
+};

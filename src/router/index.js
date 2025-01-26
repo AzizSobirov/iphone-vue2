@@ -49,6 +49,12 @@ const routes = [
       },
 
       {
+        path: "lottery",
+        name: "lottery",
+        component: () => import("../views/Lottery/index.vue"),
+      },
+
+      {
         path: "news",
         component: () => import("../views/News/layout.vue"),
         children: [
