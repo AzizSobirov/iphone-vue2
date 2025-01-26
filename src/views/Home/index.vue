@@ -107,7 +107,7 @@ export default {
           icon: phoneSvg,
           name: "Phone",
           link: "/phone",
-          notifications: 0,
+          notifications: 3,
         },
         {
           icon: settingsSvg,
@@ -210,7 +210,15 @@ export default {
   }
 
   .badge {
-    display: none;
+    position: absolute;
+    top: rem(-4);
+    right: rem(-4);
+    padding: rem(2) rem(4);
+    color: #fff;
+    font-size: rem(10);
+    line-height: 1;
+    background-color: #f04346;
+    border-radius: 9999px;
   }
 }
 </style>

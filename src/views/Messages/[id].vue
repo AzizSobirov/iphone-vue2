@@ -46,7 +46,8 @@
             'other-message': msg.sender !== profile.id,
           }"
         >
-          {{ msg.text }}
+          <span v-if="msg.type === 'text'" v-html="msg.text"></span>
+          <img v-else src="./img/image.png" alt="" />
         </div>
       </template>
     </div>
@@ -71,7 +72,7 @@
 
           <input type="file" id="file" @change="handleFileUpload" />
         </label>
-        <div class="btn btn-location">
+        <div class="btn btn-location" @click="sendLocation">
           <svg
             width="13"
             height="13"
@@ -184,7 +185,35 @@ export default {
     },
 
     handleFileUpload(file) {
-      console.log(file);
+      this.message.messages.push({
+        id: this.message.messages.length + 1,
+        type: "file",
+        file: [45.123, 45.123],
+        text: this.text,
+        sender: this.profile.id,
+        date: new Date(),
+      });
+
+      playSound("message-sent");
+      this.text = "";
+
+      this.scrollToBottom();
+    },
+
+    sendLocation() {
+      this.message.messages.push({
+        id: this.message.messages.length + 1,
+        type: "location",
+        location: [45.123, 45.123],
+        text: this.text,
+        sender: this.profile.id,
+        date: new Date(),
+      });
+
+      playSound("message-sent");
+      this.text = "";
+
+      this.scrollToBottom();
     },
 
     handleSubmit() {
@@ -335,21 +364,46 @@ export default {
   }
 
   .message {
-    padding: rem(10);
+    width: fit-content;
     max-width: 70%;
-    font-size: rem(10);
-    font-weight: 500;
-    border-radius: rem(8);
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    span {
+      padding: rem(10);
+      width: fit-content;
+      font-size: rem(10);
+      font-weight: 500;
+      border-radius: rem(8);
+      white-space: pre-wrap;
+    }
+
+    img {
+      width: rem(180);
+      height: auto;
+      max-height: rem(150);
+      border-radius: rem(8);
+      object-fit: cover;
+    }
 
     &.my-message {
       align-self: flex-end;
-      color: #fff;
-      background-color: var(--primary);
+      align-items: flex-end;
+
+      span {
+        color: #fff;
+        background-color: var(--primary);
+      }
     }
 
     &.other-message {
       align-self: flex-start;
-      background-color: var(--foreground-light);
+      align-items: flex-start;
+
+      span {
+        background-color: var(--foreground-light);
+      }
     }
   }
 }

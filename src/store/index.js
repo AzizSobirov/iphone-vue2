@@ -163,9 +163,25 @@ const messages = [
       {
         id: 2,
         sender: 1,
-        type: "text",
+        type: "file",
+        file: "",
         date: new Date("2025-01-23T10:20:00"),
         text: "Yes, I'm free. What's up?",
+      },
+      {
+        id: 2,
+        sender: 1,
+        type: "text",
+        date: new Date("2025-01-26T10:20:00"),
+        text: "How are you?",
+      },
+      {
+        id: 2,
+        sender: 2,
+        type: "location",
+        location: [58.111, 26.222],
+        date: new Date("2025-01-26T10:20:00"),
+        text: "",
       },
     ],
   },
@@ -388,13 +404,14 @@ const messages = [
 ];
 
 const saveSettings = (device) => {
-  localStorage.setItem("iphone", JSON.stringify(device));
+  let obj = { ...device, locked: true };
+  localStorage.setItem("iphone", JSON.stringify(obj));
 };
 
 export default new Vuex.Store({
   state: {
     device: {
-      locked: false,
+      locked: true,
       airplane_mode: false,
       notifications: false,
       screen_lock: false,
@@ -424,7 +441,6 @@ export default new Vuex.Store({
     getSettings(state) {
       if (localStorage.getItem("iphone")) {
         state.device = JSON.parse(localStorage.getItem("iphone"));
-        // state.device.locked = true;
         state.device.theme = "dark";
         state.device.theme = "light";
       }
