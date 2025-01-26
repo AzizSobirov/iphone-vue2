@@ -43,18 +43,6 @@ const routes = [
       },
 
       {
-        path: "radio",
-        name: "radio",
-        component: () => import("../views/Radio/index.vue"),
-      },
-
-      {
-        path: "lottery",
-        name: "lottery",
-        component: () => import("../views/Lottery/index.vue"),
-      },
-
-      {
         path: "news",
         component: () => import("../views/News/layout.vue"),
         children: [
@@ -85,7 +73,24 @@ const routes = [
             name: "groups-create",
             component: () => import("../views/Groups/create.vue"),
           },
+          {
+            path: "join",
+            name: "groups-join",
+            component: () => import("../views/Groups/join.vue"),
+          },
         ],
+      },
+
+      {
+        path: "cars",
+        name: "cars",
+        component: () => import("../views/Cars/index.vue"),
+      },
+
+      {
+        path: "radio",
+        name: "radio",
+        component: () => import("../views/Radio/index.vue"),
       },
 
       {
@@ -101,6 +106,35 @@ const routes = [
             path: ":month/:year",
             name: "calendar-date",
             component: () => import("../views/Calendar/[date].vue"),
+          },
+        ],
+      },
+
+      {
+        path: "operator",
+        name: "operator",
+        component: () => import("../views/Operator/index.vue"),
+      },
+
+      {
+        path: "lottery",
+        name: "lottery",
+        component: () => import("../views/Lottery/index.vue"),
+      },
+
+      {
+        path: "phone",
+        component: () => import("../views/Phone/layout.vue"),
+        children: [
+          {
+            path: "",
+            name: "phone",
+            component: () => import("../views/Phone/index.vue"),
+          },
+          {
+            path: "contacts",
+            name: "phone-contacts",
+            component: () => import("../views/Phone/contacts.vue"),
           },
         ],
       },
@@ -128,23 +162,6 @@ const routes = [
             path: "brightness",
             name: "settings-brightness",
             component: () => import("../views/Settings/brightness.vue"),
-          },
-        ],
-      },
-
-      {
-        path: "phone",
-        component: () => import("../views/Phone/layout.vue"),
-        children: [
-          {
-            path: "",
-            name: "phone",
-            component: () => import("../views/Phone/index.vue"),
-          },
-          {
-            path: "contacts",
-            name: "phone-contacts",
-            component: () => import("../views/Phone/contacts.vue"),
           },
         ],
       },

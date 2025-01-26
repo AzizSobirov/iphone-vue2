@@ -297,6 +297,7 @@ export default {
 
     span {
       font-size: rem(12);
+      font-weight: 600;
     }
   }
 
@@ -435,7 +436,7 @@ export default {
     height: rem(43);
     color: #5f6776;
     font-size: rem(12);
-    font-weight: 500;
+    font-weight: 600;
     background: #c6cad2;
     border-radius: rem(8);
 

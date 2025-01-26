@@ -176,13 +176,10 @@ body {
 }
 
 /* Inner transition for navigating between sections */
-// .inner-transition-enter-active,
-// .inner-transition-leave-active {
-//   transition: opacity 0.5s ease;
-// }
-// .inner-transition-enter-from {
-//   opacity: 0;
-// }
-// .inner-transition-leave-to {
-//   opacity: 1;
-// }
+.inner-transition-enter-active {
+  animation: fade-in 0.3s ease-out;
+}
+
+.inner-transition-leave-active {
+  animation: fade-out 0.3s ease-in;
+}
