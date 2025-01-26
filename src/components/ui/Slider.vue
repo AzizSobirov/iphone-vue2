@@ -192,4 +192,27 @@ export default {
     }
   }
 }
+
+.slider-operator {
+  .slider-range {
+    padding: 0;
+    background: transparent;
+    gap: rem(10);
+    --primary: #2eab71;
+
+    svg {
+      width: rem(16);
+      height: rem(16);
+    }
+  }
+
+  input {
+    &::-webkit-slider-thumb {
+      height: rem(10);
+      width: rem(10);
+      background: var(--foreground);
+      border: rem(1.5) solid #2eab71;
+    }
+  }
+}
 </style>

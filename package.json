@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue2": "^2.2.0",
+    "@webzlodimir/vue-bottom-sheet-vue2": "^0.0.9",
     "core-js": "^3.8.3",
     "swiper": "^11.2.1",
     "vue": "^2.7.16",
