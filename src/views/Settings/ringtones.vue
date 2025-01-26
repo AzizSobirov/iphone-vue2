@@ -1,7 +1,7 @@
 <template>
   <div class="screen">
     <div class="header">
-      <router-link to="/settings" class="header-btn">
+      <div class="header-btn" @click="goBack">
         <svg
           width="6"
           height="8"
@@ -17,7 +17,7 @@
             stroke-linejoin="round"
           />
         </svg>
-      </router-link>
+      </div>
       <span>Звуки</span>
     </div>
 
@@ -88,6 +88,7 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import { playSound } from "@/composables/useMe";
 import { Slider } from "@/components/ui";
 
 export default {
@@ -102,6 +103,16 @@ export default {
   },
   methods: {
     ...mapMutations(["setRingtone", "setVolume"]),
+    goBack() {
+      if (window.history.length > 1) {
+        this.$router.go(-1);
+      } else {
+        this.$router.push("/settings");
+      }
+
+      playSound();
+      this.audio.pause();
+    },
     selectRingtone(item) {
       this.audio.pause();
       this.audio.currentTime = 0;
@@ -137,6 +148,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
 
     svg {
       margin-right: rem(1.5);

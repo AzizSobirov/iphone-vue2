@@ -321,7 +321,7 @@ export default {
 
   .message-date {
     position: sticky;
-    top: rem(100);
+    top: rem(102);
     z-index: 2;
     margin: 0 auto;
     padding: rem(4) rem(6);
@@ -361,11 +361,10 @@ export default {
   z-index: 2;
   margin-top: auto;
   padding-top: rem(5);
-  padding-bottom: var(--safearea-bottom);
+  padding-bottom: calc(var(--safearea-bottom) + rem(5));
   padding-left: var(--safearea-inline);
   padding-right: var(--safearea-inline);
   width: 100%;
-  height: rem(50);
   background: rgba(255, 255, 255, 0.41);
   backdrop-filter: blur(16px);
 }
@@ -417,7 +416,7 @@ export default {
   cursor: pointer;
 
   &:hover {
-    color: #fff;
+    color: #fff !important;
     background: var(--primary);
   }
 

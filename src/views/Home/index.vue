@@ -118,7 +118,7 @@ export default {
         {
           icon: contactsSvg,
           name: "Contacts",
-          link: "/contacts",
+          link: "/phone/contacts",
           notifications: 0,
         },
         {

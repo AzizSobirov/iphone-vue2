@@ -66,6 +66,23 @@ const routes = [
       },
 
       {
+        path: "groups",
+        component: () => import("../views/Groups/layout.vue"),
+        children: [
+          {
+            path: "",
+            name: "groups",
+            component: () => import("../views/Groups/index.vue"),
+          },
+          {
+            path: "create",
+            name: "groups-create",
+            component: () => import("../views/Groups/create.vue"),
+          },
+        ],
+      },
+
+      {
         path: "calendar",
         component: () => import("../views/Calendar/layout.vue"),
         children: [
@@ -105,6 +122,23 @@ const routes = [
             path: "brightness",
             name: "settings-brightness",
             component: () => import("../views/Settings/brightness.vue"),
+          },
+        ],
+      },
+
+      {
+        path: "phone",
+        component: () => import("../views/Phone/layout.vue"),
+        children: [
+          {
+            path: "",
+            name: "phone",
+            component: () => import("../views/Phone/index.vue"),
+          },
+          {
+            path: "contacts",
+            name: "phone-contacts",
+            component: () => import("../views/Phone/contacts.vue"),
           },
         ],
       },
