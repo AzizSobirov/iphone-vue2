@@ -45,6 +45,7 @@ import phoneSvg from "./img/phone.svg";
 import settingsSvg from "./img/settings.svg";
 import contactsSvg from "./img/contacts.svg";
 import messagesSvg from "./img/messages.svg";
+import uderSvg from "./img/uder.svg";
 
 export default {
   name: "home",
@@ -100,6 +101,11 @@ export default {
           icon: lotterySvg,
           name: "Лотерея",
           link: "/lottery",
+        },
+        {
+          icon: uderSvg,
+          name: "Uder",
+          link: "/uber",
         },
       ],
       tabs: [

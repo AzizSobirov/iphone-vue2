@@ -141,6 +141,7 @@ export default {
 
 .screen {
   padding-top: 0;
+  overflow-x: hidden;
 }
 
 .header {
@@ -246,11 +247,12 @@ export default {
       font-weight: 600;
       cursor: pointer;
       transition: var(--transition-ease);
+      overflow: hidden;
       opacity: 0;
 
       &.active {
         margin-left: rem(8);
-        width: rem(50);
+        width: rem(65);
         opacity: 1;
       }
     }

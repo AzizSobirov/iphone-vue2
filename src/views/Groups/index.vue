@@ -83,8 +83,26 @@
           <div class="participant-name">{{ participant.name }}</div>
           <div class="participant-surname">{{ participant.surname }}</div>
         </div>
-        <div v-if="participant.admin" class="participant-icon">
-          <img src="./img/icon.png" alt="" />
+        <div class="participant-icon">
+          <img v-if="participant.admin" src="./img/icon.png" alt="" />
+
+          <svg
+            v-else
+            width="13"
+            height="14"
+            viewBox="0 0 13 14"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              opacity="0.5"
+              d="M3.81881 4.31889L9.18103 9.68111M3.81881 9.68111L9.18103 4.31889"
+              stroke="currentColor"
+              stroke-width="0.999999"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </div>
       </div>
     </div>
@@ -356,6 +374,7 @@ export default {
   align-items: center;
   justify-content: flex-start;
   gap: rem(12);
+  cursor: pointer;
 
   &-avatar {
     position: relative;
@@ -410,10 +429,21 @@ export default {
     align-items: center;
     justify-content: center;
 
-    img {
+    img,
+    svg {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+
+    svg path {
+      transition: var(--transition-ease);
+    }
+  }
+
+  &:hover .participant-icon {
+    svg path {
+      opacity: 1;
     }
   }
 }

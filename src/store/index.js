@@ -413,7 +413,7 @@ export default new Vuex.Store({
     device: {
       locked: true,
       airplane_mode: false,
-      notifications: false,
+      notifications: true,
       screen_lock: false,
       theme: "light",
       fontSize: 16,
@@ -441,8 +441,8 @@ export default new Vuex.Store({
     getSettings(state) {
       if (localStorage.getItem("iphone")) {
         state.device = JSON.parse(localStorage.getItem("iphone"));
-        state.device.theme = "dark";
-        state.device.theme = "light";
+        // state.device.theme = "dark";
+        // state.device.theme = "light";
       }
     },
     toggleLock(state) {

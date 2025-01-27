@@ -123,6 +123,12 @@ const routes = [
       },
 
       {
+        path: "uber",
+        name: "uber",
+        component: () => import("../views/Uber/index.vue"),
+      },
+
+      {
         path: "phone",
         component: () => import("../views/Phone/layout.vue"),
         children: [

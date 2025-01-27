@@ -492,7 +492,7 @@ export default {
   padding: rem(6) rem(8) rem(6) rem(14);
   width: 100%;
   background: var(--foreground-light);
-  border: rem(1.5) solid var(--foreground-light);
+  border: rem(1) solid var(--foreground-light);
   border-radius: rem(6);
   transition: background var(--transition-ease), color var(--transition-ease),
     border var(--transition-ease);
@@ -543,6 +543,10 @@ export default {
     height: rem(12);
     object-fit: contain;
   }
+}
+
+.dark .car {
+  background: #1d2024;
 }
 
 .btn {
