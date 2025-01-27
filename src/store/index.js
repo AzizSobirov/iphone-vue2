@@ -403,15 +403,82 @@ const messages = [
   },
 ];
 
+const contacts = [
+  {
+    id: 1,
+    name: "Alice",
+    surname: "Smith",
+    number: "+1234567890",
+    favourite: true,
+  },
+
+  {
+    id: 2,
+    name: "Bob",
+    surname: "Johnson",
+    number: "+1987654321",
+    favourite: false,
+  },
+  {
+    id: 3,
+    name: "Charlie",
+    surname: "Brown",
+    number: "+1122334455",
+    favourite: true,
+  },
+  {
+    id: 4,
+    name: "David",
+    surname: "Williams",
+    number: "+1222333444",
+    favourite: true,
+  },
+  {
+    id: 5,
+    name: "Eve",
+    surname: "Miller",
+    number: "+1333444555",
+    favourite: true,
+  },
+  {
+    id: 6,
+    name: "Frank",
+    surname: "Garcia",
+    number: "+1444555666",
+    favourite: true,
+  },
+  {
+    id: 7,
+    name: "Grace",
+    surname: "Martinez",
+    number: "+1555666777",
+    favourite: true,
+  },
+  {
+    id: 8,
+    name: "Aziz",
+    surname: "Sobirov",
+    number: "+1666777888",
+    favourite: true,
+  },
+  {
+    id: 9,
+    name: "Sobirov",
+    surname: "Aziz",
+    number: "+1777888999",
+    favourite: true,
+  },
+];
+
 const saveSettings = (device) => {
-  let obj = { ...device, locked: true };
+  let obj = { ...device, locked: false };
   localStorage.setItem("iphone", JSON.stringify(obj));
 };
 
 export default new Vuex.Store({
   state: {
     device: {
-      locked: true,
+      locked: false,
       airplane_mode: false,
       notifications: true,
       screen_lock: false,
@@ -435,14 +502,15 @@ export default new Vuex.Store({
     ringtones,
     gallery: [...gallery, ...gallery, ...gallery, ...gallery, ...gallery],
     messages,
+    contacts,
   },
   getters: {},
   mutations: {
     getSettings(state) {
       if (localStorage.getItem("iphone")) {
         state.device = JSON.parse(localStorage.getItem("iphone"));
-        // state.device.theme = "dark";
-        // state.device.theme = "light";
+        state.device.theme = "dark";
+        state.device.theme = "light";
       }
     },
     toggleLock(state) {
@@ -489,6 +557,19 @@ export default new Vuex.Store({
     },
     deletePhoto(state, value) {
       state.gallery = state.gallery.filter((item) => item.id !== value.id);
+    },
+    addFavourite(state, value) {
+      state.contacts = state.contacts.map((item) =>
+        item.id === value.id ? { ...item, favourite: !item.favourite } : item
+      );
+    },
+    deleteFavourite(state, value) {
+      state.contacts = state.contacts.map((item) =>
+        item.id === value.id ? { ...item, favourite: !item.favourite } : item
+      );
+    },
+    deleteContact(state, value) {
+      state.contacts = state.contacts.filter((item) => item.id !== value.id);
     },
   },
   actions: {},

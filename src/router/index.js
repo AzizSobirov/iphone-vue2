@@ -142,6 +142,21 @@ const routes = [
             name: "phone-contacts",
             component: () => import("../views/Phone/contacts.vue"),
           },
+          {
+            path: "recent",
+            name: "phone-recent",
+            component: () => import("../views/Phone/recent.vue"),
+          },
+          {
+            path: "favorites",
+            name: "phone-favorites",
+            component: () => import("../views/Phone/favorites.vue"),
+          },
+          {
+            path: ":id",
+            name: "phone-info",
+            component: () => import("../views/Phone/info.vue"),
+          },
         ],
       },
 

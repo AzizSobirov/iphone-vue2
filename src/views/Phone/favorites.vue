@@ -2,7 +2,7 @@
   <div class="screen" ref="screen">
     <div class="header" :class="{ active: isScrolled }">
       <div class="header__group">
-        <div class="header__group-title">Контакты</div>
+        <div class="header__group-title">Избранное</div>
         <div class="header__group-add" @click="$emit('saveContact')">
           <svg
             width="11"
@@ -44,7 +44,7 @@
             type="text"
             v-model="search"
             placeholder="Поиск"
-            @input="filterContacts"
+            @input="filterFavourites"
           />
         </div>
         <div
@@ -57,31 +57,23 @@
       </div>
     </div>
 
-    <div class="profile">
-      <div class="profile-avatar"><img :src="profile.avatar" alt="" /></div>
-      <div class="profile-info">
-        <div class="profile-name">{{ profile.name }}</div>
-        <div class="profile-number">Это Вы</div>
-      </div>
-    </div>
-
-    <div class="contacts">
+    <div class="favourites">
       <div
-        v-for="(group, letter) in groupedContacts"
+        v-for="(group, letter) in groupedFavourites"
         :key="letter"
-        class="contacts__group"
+        class="favourites__group"
       >
-        <div class="contacts__group-title">{{ letter }}</div>
+        <div class="favourites__group-title">{{ letter }}</div>
         <div
           v-for="item in group"
           :key="item.id"
-          class="contacts__item"
-          @click="selectContact(item)"
+          class="favourites__item"
+          @click="selectFavourite(item)"
         >
           {{ item.name }} {{ item.surname || "" }}
         </div>
       </div>
-      <div v-if="!filteredContacts.length" class="no-results">
+      <div v-if="!filteredFavourites.length" class="no-results">
         Нет результатов
       </div>
     </div>
@@ -97,13 +89,13 @@ export default {
     return {
       isScrolled: false,
       search: "",
-      filteredContacts: [],
+      filteredFavourites: [],
     };
   },
   computed: {
-    ...mapState(["contacts", "profile"]),
-    groupedContacts() {
-      return this.filteredContacts.reduce((acc, item) => {
+    ...mapState(["contacts"]),
+    groupedFavourites() {
+      return this.filteredFavourites.reduce((acc, item) => {
         const firstLetter = item.name.charAt(0).toUpperCase();
         if (!acc[firstLetter]) acc[firstLetter] = [];
         acc[firstLetter].push(item);
@@ -115,9 +107,11 @@ export default {
     scrollHandler() {
       this.isScrolled = this.$refs.screen.scrollTop > 0;
     },
-    filterContacts() {
+    filterFavourites() {
       const query = this.search.toLowerCase();
-      this.filteredContacts = this.contacts.filter(
+
+      let arr = this.contacts.filter((item) => item.favourite);
+      this.filteredFavourites = arr.filter(
         (fav) =>
           fav.name.toLowerCase().includes(query) ||
           fav.surname.toLowerCase().includes(query) ||
@@ -126,15 +120,15 @@ export default {
     },
     clearSearch() {
       this.search = "";
-      this.filterContacts();
+      this.filterFavourites();
     },
-    selectContact(item) {
+    selectFavourite(item) {
       this.$router.push(`/phone/${item.id}`);
       playSound();
     },
   },
   mounted() {
-    this.filteredContacts = this.contacts;
+    this.filteredFavourites = this.contacts.filter((item) => item.favourite);
     this.$refs.screen.addEventListener("scroll", this.scrollHandler);
   },
   beforeDestroy() {
@@ -265,46 +259,7 @@ export default {
   background: rgba(23, 23, 23, 0.41);
 }
 
-.profile {
-  padding: rem(5) 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: rem(10);
-
-  &-avatar {
-    width: rem(32);
-    height: rem(32);
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-  }
-
-  &-info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: rem(6);
-  }
-
-  &-name {
-    font-size: rem(10);
-    font-weight: 600;
-  }
-
-  &-number {
-    color: var(--text-muted);
-    font-size: rem(10);
-    font-weight: 500;
-  }
-}
-
-.contacts {
+.favourites {
   padding-top: rem(10);
   padding-bottom: calc(var(--safearea-bottom) + rem(40));
   width: 100%;

@@ -98,7 +98,7 @@
 
     <div class="btn btn-primary" @click="openSheet">Пополнить баланс</div>
 
-    <Sheet ref="sheet" :max-height="1080" :zIndex="9">
+    <Sheet ref="sheet" :zIndex="9">
       <template #header>
         <div class="top-right">
           <img class="img-light" src="./img/sim-right-light.png" alt="" />
@@ -496,11 +496,26 @@ export default {
 </style>
 
 <style lang="scss">
+@use "@/assets/scss/_mixins.scss" as *;
+
 .bottom-sheet {
   position: absolute !important;
+  width: 100% !important;
 
   &__content {
+    max-width: 100% !important;
+    height: fit-content !important;
     background: #e6ebf6 !important;
+    border-radius: rem(15) rem(15) 0 0 !important;
+  }
+
+  &__draggable-area {
+    padding: rem(16) !important;
+  }
+
+  &__draggable-thumb {
+    width: rem(40) !important;
+    height: rem(4) !important;
   }
 }
 
