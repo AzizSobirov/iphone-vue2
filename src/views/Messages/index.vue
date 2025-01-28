@@ -4,7 +4,7 @@
       <div class="header__edit">Править</div>
       <div class="header__group">
         <div class="header__group-title">Сообщения</div>
-        <div class="header__group-add">
+        <div class="header__group-add" @click="$emit('addContact')">
           <svg
             width="11"
             height="11"
@@ -56,22 +56,28 @@
     <div class="messages">
       <div
         class="message"
-        v-for="message in getMessages"
-        :key="message.id"
-        @click="openMessage(message.id)"
+        v-for="contact in getContacts"
+        :key="contact.id"
+        @click="openMessage(contact.id)"
       >
         <div class="message__avatar">
           <span class="message__avatar-dot"></span>
-          <img :src="message.avatar" alt="" />
+          <img :src="contact.avatar" alt="" />
         </div>
 
         <div class="message__info">
-          <div class="message__info-sender">{{ message.name }}</div>
-          <div class="message__info-text">{{ message.text }}</div>
+          <div class="message__info-sender">
+            {{ contact.name }} {{ contact.surname }}
+          </div>
+          <div class="message__info-text">
+            {{ contact.last_message.text || "" }}
+          </div>
         </div>
 
         <div class="message__date">
-          <span>{{ dateToTime(message.date) }}</span>
+          <span v-if="contact.last_message.date">{{
+            dateToTime(contact.last_message.date)
+          }}</span>
           <svg
             width="11"
             height="11"
@@ -107,10 +113,11 @@ export default {
     };
   },
   computed: {
-    ...mapState(["messages"]),
-    getMessages() {
-      return this.messages.filter((message) => {
-        return message.name.toLowerCase().includes(this.search.toLowerCase());
+    ...mapState(["contacts"]),
+    getContacts() {
+      const contacts = this.contacts.filter((item) => item.messages);
+      return contacts.filter((contact) => {
+        return contact.name.toLowerCase().includes(this.search.toLowerCase());
       });
     },
     dateToTime() {

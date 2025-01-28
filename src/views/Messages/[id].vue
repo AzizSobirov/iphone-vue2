@@ -1,6 +1,6 @@
 <template>
   <div class="screen" ref="screen">
-    <div class="header" :class="{ active: isScrolled }" v-if="message">
+    <div class="header" :class="{ active: isScrolled }" v-if="contact">
       <div class="header__back" @click="goBack">
         <div class="header__back-icon">
           <svg
@@ -23,12 +23,14 @@
       </div>
 
       <div class="header__user">
-        <img class="header__user-avatar" :src="message.avatar" alt="" />
-        <div class="header__user-name">{{ message.name }}</div>
+        <img class="header__user-avatar" :src="contact.avatar" alt="" />
+        <div class="header__user-name">
+          {{ contact.name }} {{ contact.surname }}
+        </div>
       </div>
     </div>
 
-    <div class="messages" v-if="message">
+    <div class="messages" v-if="contact">
       <!-- Grouped Messages by Date -->
       <template v-for="(group, index) in groupMessagesByDate">
         <!-- Sticky Date Header -->
@@ -134,19 +136,19 @@ export default {
   data() {
     return {
       isScrolled: false,
-      message: null,
+      contact: null,
       text: "",
     };
   },
   computed: {
-    ...mapState(["messages", "profile"]),
+    ...mapState(["contacts", "profile"]),
     dateToTime() {
       return dateToTime;
     },
     groupMessagesByDate() {
       const grouped = [];
 
-      this.message.messages.forEach((msg) => {
+      this.contact.messages.forEach((msg) => {
         const date = msg.date.toDateString(); // Group by date only (ignoring time)
         const existingGroup = grouped.find((g) => g.date === date);
 
@@ -177,16 +179,16 @@ export default {
 
     getMessage() {
       const id = this.$route.params.id;
-      this.message = this.messages.find((message) => message.id == id);
+      this.contact = this.contacts.find((contact) => contact.id == id);
 
-      if (!this.message) {
+      if (!this.contact) {
         this.$router.push("/messages");
       }
     },
 
     handleFileUpload(file) {
-      this.message.messages.push({
-        id: this.message.messages.length + 1,
+      this.contact.messages.push({
+        id: this.contact.messages.length + 1,
         type: "file",
         file: [45.123, 45.123],
         text: this.text,
@@ -201,8 +203,8 @@ export default {
     },
 
     sendLocation() {
-      this.message.messages.push({
-        id: this.message.messages.length + 1,
+      this.contact.messages.push({
+        id: this.contact.messages.length + 1,
         type: "location",
         location: [45.123, 45.123],
         text: this.text,
@@ -217,8 +219,8 @@ export default {
     },
 
     handleSubmit() {
-      this.message.messages.push({
-        id: this.message.messages.length + 1,
+      this.contact.messages.push({
+        id: this.contact.messages.length + 1,
         type: "text",
         text: this.text,
         sender: this.profile.id,

@@ -27,7 +27,7 @@
       <div class="header__name">{{ contact.name }} {{ contact.surname }}</div>
 
       <div class="header__actions">
-        <div class="btn">
+        <router-link :to="`/messages/${contact.id}`" class="btn">
           <svg
             width="23"
             height="23"
@@ -41,7 +41,7 @@
             />
           </svg>
           <span>написать</span>
-        </div>
+        </router-link>
         <div class="btn" @click="callPhone">
           <svg
             width="21"

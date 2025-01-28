@@ -56,6 +56,12 @@
       </div>
     </div>
 
+    <div
+      v-show="select.active"
+      class="select-overlay"
+      @click="select.active = false"
+    ></div>
+
     <div class="search">
       <div class="search__input">
         <input type="text" placeholder="Поиск" v-model="search" />
@@ -262,6 +268,7 @@ export default {
 
 .select {
   position: relative;
+  z-index: 4;
   width: 100%;
 
   &__trigger {
@@ -339,8 +346,8 @@ export default {
         content: "";
         position: absolute;
         bottom: 0;
-        left: rem(30);
-        width: calc(100% - rem(35));
+        left: 0;
+        width: 100%;
         border: rem(1) solid #33394510;
       }
     }
@@ -376,6 +383,20 @@ export default {
   &__option::after {
     border-color: #333945;
   }
+}
+
+.select-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.dark .select-overlay {
+  background: rgba(13, 13, 13, 0.55);
 }
 
 .search {
