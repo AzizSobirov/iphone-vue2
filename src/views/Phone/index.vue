@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from "vuex";
 import { playSound } from "@/composables/useMe";
 
 export default {
@@ -115,6 +116,7 @@ export default {
     },
   },
   methods: {
+    ...mapMutations(["callPhone"]),
     appendNumber(value) {
       this.phoneNumber += value;
       playSound("dial");
@@ -123,8 +125,7 @@ export default {
       this.phoneNumber = this.phoneNumber.slice(0, -1);
     },
     callNumber() {
-      // alert(`Calling: ${this.phoneNumber}`);
-      // playSound("ringing");
+      this.callPhone(this.phoneNumber);
     },
     addNumber() {
       this.$emit("saveContact", this.phoneNumber);

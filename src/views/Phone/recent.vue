@@ -68,7 +68,7 @@
         </div>
 
         <div class="call__actions">
-          <div class="btn">
+          <div class="btn" @click="$emit('saveContact', call.number)">
             <svg
               width="16"
               height="16"
@@ -109,7 +109,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapMutations } from "vuex";
 import { dateToTime } from "@/composables/useDate";
 
 export default {
@@ -197,8 +197,9 @@ export default {
   },
 
   methods: {
+    ...mapMutations(["callPhone"]),
     callToNumber(call) {
-      // playSound("ringing");
+      this.callPhone(call.number);
     },
     scrollHandler() {
       this.isScrolled = this.$refs.screen.scrollTop > 0;

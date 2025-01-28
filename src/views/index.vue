@@ -3,12 +3,14 @@
     class="iphone"
     :class="{
       dark: device.theme === 'dark',
+      open: open,
     }"
     :style="{
       fontFamily: `${device.fontFamily}, sans-serif`,
       filter: `brightness(${device.brightness}%)`,
     }"
   >
+    <LeftButtons />
     <div
       class="layout"
       :style="{
@@ -16,6 +18,7 @@
       }"
     >
       <Statusbar />
+      <Actions />
       <transition name="lockscreen-transition" mode="out-in">
         <LockScreen v-if="device.locked" />
       </transition>
@@ -29,13 +32,19 @@
 
 <script>
 import { mapState, mapMutations } from "vuex";
-import { LockScreen, Statusbar, Gesture } from "@/components/layout";
+import {
+  LockScreen,
+  Statusbar,
+  Gesture,
+  LeftButtons,
+  Actions,
+} from "@/components/layout";
 
 export default {
   name: "iphone",
-  components: { Statusbar, Gesture, LockScreen },
+  components: { Statusbar, Gesture, LockScreen, LeftButtons, Actions },
   computed: {
-    ...mapState(["device"]),
+    ...mapState(["device", "open"]),
   },
   methods: {
     ...mapMutations(["getSettings", "setVolume"]),

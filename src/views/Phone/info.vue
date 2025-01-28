@@ -42,7 +42,7 @@
           </svg>
           <span>написать</span>
         </div>
-        <div class="btn">
+        <div class="btn" @click="callPhone">
           <svg
             width="21"
             height="21"
@@ -107,7 +107,12 @@ export default {
     ...mapState(["contacts"]),
   },
   methods: {
-    ...mapMutations(["addFavourite", "deleteFavourite", "deleteContact"]),
+    ...mapMutations([
+      "addFavourite",
+      "deleteFavourite",
+      "deleteContact",
+      "callPhone",
+    ]),
     goBack() {
       if (window.history.length > 1) {
         this.$router.go(-1);

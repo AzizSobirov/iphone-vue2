@@ -114,6 +114,7 @@ export default {
       this.audio.pause();
     },
     selectRingtone(item) {
+      this.audio.volume = this.device.volume / 100;
       this.audio.pause();
       this.audio.currentTime = 0;
       this.audio.src = item.src;

@@ -1,5 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import { playSound, stopSound } from "@/composables/useMe";
 
 import noAvatar from "../assets/img/no-avatar.svg";
 
@@ -471,14 +472,19 @@ const contacts = [
 ];
 
 const saveSettings = (device) => {
-  let obj = { ...device, locked: false };
+  let obj = { ...device, locked: true };
   localStorage.setItem("iphone", JSON.stringify(obj));
 };
 
 export default new Vuex.Store({
   state: {
+    open: false,
+    notification: null,
+    calling: null,
+
     device: {
-      locked: false,
+      mute: false,
+      locked: true,
       airplane_mode: false,
       notifications: true,
       screen_lock: false,
@@ -506,11 +512,12 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
+    openPhone(state) {
+      state.open = true;
+    },
     getSettings(state) {
       if (localStorage.getItem("iphone")) {
         state.device = JSON.parse(localStorage.getItem("iphone"));
-        state.device.theme = "dark";
-        state.device.theme = "light";
       }
     },
     toggleLock(state) {
@@ -526,6 +533,10 @@ export default new Vuex.Store({
     },
     toggleScreenLock(state, value) {
       state.device.screen_lock = value;
+      saveSettings(state.device);
+    },
+    toggleMute(state) {
+      state.device.mute = !state.device.mute;
       saveSettings(state.device);
     },
     setSize(state, value) {
@@ -570,6 +581,39 @@ export default new Vuex.Store({
     },
     deleteContact(state, value) {
       state.contacts = state.contacts.filter((item) => item.id !== value.id);
+    },
+    pushNotification(state, value) {
+      state.notification = value;
+    },
+    callPhone(state, value) {
+      state.calling = {
+        accepted: true,
+        fullScreen: true,
+      };
+      playSound("ringing");
+    },
+    recieveCall(state, value) {
+      state.calling = {
+        accepted: false,
+        fullScreen: state.device.locked,
+      };
+      playSound(null, state.device.ringtone.src);
+    },
+    acceptCall(state) {
+      state.calling = {
+        ...state.calling,
+        accepted: true,
+        fullScreen: true,
+      };
+      stopSound();
+    },
+    endCall(state) {
+      state.calling = null;
+      stopSound();
+    },
+    declineCall(state) {
+      state.calling = null;
+      stopSound();
     },
   },
   actions: {},

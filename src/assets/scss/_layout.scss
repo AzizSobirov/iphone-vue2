@@ -4,23 +4,29 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 #app {
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .iphone {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  bottom: rem(30);
+  right: rem(30);
+  transform: translateY(120%);
   width: rem(280);
   height: rem(568);
   font-family: "SF Pro Display", sans-serif;
   background: url("../img/bg.png") center/contain no-repeat;
+  transition: transform 0.5s ease-in-out;
   user-select: none;
   overflow: hidden;
+
+  &.open {
+    transform: translateY(0);
+  }
 }
 
 .iphone * {

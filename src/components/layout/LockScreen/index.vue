@@ -27,6 +27,47 @@
     <div class="date">{{ currentDate }}</div>
     <div class="time">{{ currentTime }}</div>
 
+    <div class="notifications">
+      <div class="notification" v-for="i in 4" :key="i">
+        <div class="notification-header">
+          <div class="notification-icon">
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 17 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.7633 0.699951H4.03668C2.19389 0.699951 0.700012 2.19383 0.700012 4.03662V12.7633C0.700012 14.6061 2.19389 16.1 4.03668 16.1H12.7633C14.6061 16.1 16.1 14.6061 16.1 12.7633V4.03662C16.1 2.19383 14.6061 0.699951 12.7633 0.699951Z"
+                fill="url(#paint0_linear_70_1399)"
+              />
+              <path
+                d="M8.87561 4.05225C6.21173 4.05225 4.05212 5.8194 4.05212 7.99874C4.05212 9.38439 4.92912 10.6023 6.24462 11.3061C6.29272 11.3299 6.33044 11.3704 6.35065 11.4201C6.37085 11.4698 6.37213 11.5252 6.35424 11.5758C6.22393 11.8906 6.01432 12.1663 5.74583 12.3761C5.72693 12.3914 5.71368 12.4126 5.70816 12.4363C5.70265 12.46 5.70518 12.4849 5.71535 12.507C5.72553 12.5291 5.74277 12.5472 5.76437 12.5584C5.78596 12.5696 5.81068 12.5734 5.83462 12.569C6.40809 12.4705 6.95251 12.2458 7.42857 11.9112C7.47623 11.8757 7.53075 11.8504 7.58868 11.837C7.64661 11.8236 7.70669 11.8224 7.76511 11.8334C8.13168 11.9053 8.50426 11.942 8.87781 11.943C11.5417 11.943 13.7013 10.1759 13.7013 7.99654C13.7013 5.8172 11.5395 4.05225 8.87561 4.05225Z"
+                fill="#FEFEFE"
+              />
+              <defs>
+                <linearGradient
+                  id="paint0_linear_70_1399"
+                  x1="8.40001"
+                  y1="0.699951"
+                  x2="8.40001"
+                  y2="16.1"
+                  gradientUnits="userSpaceOnUse"
+                >
+                  <stop stop-color="#5CF777" />
+                  <stop offset="1" stop-color="#0DBC29" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="notification-title">Новое сообщение</div>
+          <div class="notification-time">1m ago</div>
+        </div>
+        <div class="notification-text">Здесь будет какой-то текст</div>
+      </div>
+    </div>
+
     <div class="actions">
       <div class="action">
         <svg
@@ -244,7 +285,7 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 98;
+  z-index: 97;
   width: 100%;
   height: 100%;
   color: #fff;
@@ -280,6 +321,65 @@ export default {
   font-size: rem(60);
   font-weight: 500;
   line-height: 1;
+}
+
+.notifications {
+  margin-top: rem(10);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: rem(10);
+}
+
+.notification {
+  padding: rem(7.5);
+  width: 100%;
+  height: rem(48);
+  color: var(--foreground);
+  backdrop-filter: blur(rem(20));
+  background: rgba(245, 248, 255, 0.5);
+  border-radius: rem(5.5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: rem(5);
+
+  &-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(5.5);
+  }
+
+  &-icon {
+    width: rem(15.5);
+    height: rem(15.5);
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-title {
+    font-size: rem(10);
+    font-weight: 600;
+  }
+
+  &-time {
+    margin-left: auto;
+    font-size: rem(10);
+  }
+
+  &-text {
+    font-size: rem(10);
+  }
+}
+
+.dark .notification {
+  background: rgba(20, 20, 20, 0.46);
 }
 
 .actions {
