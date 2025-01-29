@@ -54,12 +54,9 @@
     </div>
 
     <div class="messages">
-      <div
-        class="message"
-        v-for="contact in getContacts"
-        :key="contact.id"
-        @click="openMessage(contact.id)"
-      >
+      <div class="message" v-for="contact in getContacts" :key="contact.id">
+        <div class="message-overlay" @click="openMessage(contact.id)"></div>
+
         <div class="message__avatar">
           <span class="message__avatar-dot"></span>
           <img :src="contact.avatar" alt="" />
@@ -93,6 +90,25 @@
               stroke-linejoin="round"
             />
           </svg>
+        </div>
+
+        <div class="message__actions">
+          <div class="btn">
+            <svg
+              width="12"
+              height="14"
+              viewBox="0 0 12 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M0.309877 2.396H1.02909V11.9883C1.02909 13.0975 1.88134 14 2.92869 14H9.0097C10.0571 14 10.9094 13.0975 10.9094 11.9883V2.396H11.6903C11.8614 2.396 12 2.24908 12 2.06787C12 1.88664 11.8614 1.73973 11.6903 1.73973H7.84931V0.887923C7.84931 0.398312 7.4732 0 7.01095 0H4.9893C4.52695 0 4.15082 0.398284 4.15082 0.887923V1.73973H0.309877C0.138736 1.73973 0 1.88664 0 2.06787C0 2.24908 0.138736 2.396 0.309877 2.396ZM4.77057 0.887923C4.77057 0.76228 4.87071 0.65627 4.98933 0.65627H7.01098C7.13157 0.65627 7.22961 0.760229 7.22961 0.887923V1.73973H4.77057V0.887923ZM3.34415 10.8903V5.16627C3.34415 4.98504 3.48301 4.83812 3.65403 4.83812C3.82514 4.83812 3.96388 4.98504 3.96388 5.16627V10.8904C3.96388 11.0716 3.82514 11.2185 3.65403 11.2185C3.48301 11.2185 3.34415 11.0716 3.34415 10.8903ZM5.65933 10.8903V5.16627C5.65933 4.98504 5.79807 4.83812 5.96918 4.83812C6.14032 4.83812 6.27903 4.98504 6.27903 5.16627V10.8904C6.27903 11.0716 6.1403 11.2185 5.96918 11.2185C5.79807 11.2185 5.65933 11.0716 5.65933 10.8903ZM7.97441 10.8903V5.16627C7.97441 4.98504 8.11325 4.83812 8.28413 4.83812C8.45538 4.83812 8.59399 4.98504 8.59399 5.16627V10.8904C8.59399 11.0716 8.45538 11.2185 8.28413 11.2185C8.11325 11.2185 7.97441 11.0716 7.97441 10.8903Z"
+                fill="#FF393D"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </div>
@@ -350,6 +366,55 @@ export default {
     svg {
       width: rem(10);
       height: rem(10);
+    }
+  }
+
+  &__actions {
+    position: absolute;
+    top: 40%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(15);
+    transition: var(--transition-ease);
+    opacity: 0;
+
+    .btn {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: rem(15);
+        height: rem(15);
+      }
+
+      &:last-child svg {
+        width: rem(12);
+        height: rem(12);
+      }
+    }
+  }
+
+  &-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    .message__date {
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .message__actions {
+      opacity: 1;
     }
   }
 }
