@@ -428,7 +428,6 @@ export default new Vuex.Store({
     getSettings(state) {
       if (localStorage.getItem("iphone")) {
         state.device = JSON.parse(localStorage.getItem("iphone"));
-        state.device.theme = 'light'
       }
     },
     toggleLock(state) {
