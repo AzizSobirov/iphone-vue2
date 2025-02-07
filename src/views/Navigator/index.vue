@@ -133,17 +133,45 @@
           <div class="location__name">{{ location.name }}</div>
           <div class="location__distance">{{ location.distance }}</div>
         </div>
-        <div class="btn">Метка</div>
+        <div class="btn" @click="openSheet">Метка</div>
       </div>
     </div>
+
+    <Sheet ref="sheet" :can-swipe="false" :zIndex="9">
+      <div class="sheet">
+        <div class="sheet-icon">
+          <svg
+            width="42"
+            height="41"
+            viewBox="0 0 42 41"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M33.5372 25.6081C33.4937 25.6516 33.4553 25.7019 33.4122 25.7454L21.332 37.1594L9.32362 25.8151C9.25645 25.7479 9.2001 25.6751 9.13343 25.605C4.10533 27.163 0.832031 29.6491 0.832031 32.4582C0.832031 37.1763 10.0109 41 21.332 41C32.6568 41 41.832 37.1763 41.832 32.4582C41.832 29.6491 38.5622 27.163 33.5372 25.6081Z"
+              fill="white"
+            />
+            <path
+              d="M34.9969 13.6663C34.9969 6.12588 28.8806 0 21.332 0C13.7881 0.00310303 7.6652 6.11877 7.6652 13.6699C7.6652 17.4399 9.19499 20.8567 11.6694 23.3296L21.332 32.4582L30.9963 23.326C33.4686 20.8572 34.9989 17.4404 34.9989 13.6663H34.9969ZM21.332 20.5C17.5569 20.5 14.4989 17.4434 14.4989 13.6663C14.4989 9.89275 17.5569 6.83317 21.332 6.83317C25.1056 6.83317 28.1652 9.89275 28.1652 13.6663C28.1652 17.4434 25.1056 20.5 21.332 20.5Z"
+              fill="white"
+            />
+          </svg>
+        </div>
+        <div class="sheet-address">Мэрия г. Лос-Сантос</div>
+        <div class="sheet-distance">255 км от Вас</div>
+        <div class="btn" @click="closeSheet">Отключить</div>
+      </div>
+    </Sheet>
   </div>
 </template>
 
 <script>
+import Sheet from "@webzlodimir/vue-bottom-sheet-vue2";
 import { playSound } from "@/composables/useMe";
 
 export default {
   name: "Navigator",
+  components: { Sheet },
   data() {
     return {
       search: "",
@@ -210,6 +238,14 @@ export default {
   methods: {
     playSound() {
       playSound();
+    },
+
+    openSheet() {
+      this.$refs.sheet.open();
+    },
+    closeSheet() {
+      this.$refs.sheet.close();
+      this.selected_users = [];
     },
   },
 };
@@ -528,6 +564,84 @@ export default {
       box-shadow: 0 0 rem(23) 0 rgba(10, 131, 251, 0.35),
         inset 0 0 rem(7) 0 rgba(255, 255, 255, 0.25);
     }
+  }
+}
+
+.sheet {
+  padding: rem(32) var(--safearea-inline) rem(50);
+  width: 100%;
+  color: #fff;
+  background-color: var(--primary);
+  background-image: url('data:image/svg+xml,<svg width="326" height="326" viewBox="0 0 326 326" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M260.046 203.615C259.7 203.962 259.394 204.361 259.052 204.707L163 295.462L67.5185 205.261C66.9844 204.727 66.5363 204.149 66.0062 203.591C26.0267 215.979 0 235.747 0 258.082C0 295.597 72.9831 326 163 326C253.046 326 326 295.597 326 258.082C326 235.747 300.001 215.979 260.046 203.615Z" fill="white" fill-opacity="0.03" /><path d="M271.652 108.664C271.652 48.7082 223.02 0 163 0C103.016 0.0246729 54.332 48.6517 54.332 108.693C54.332 138.669 66.4957 165.837 86.1703 185.498L163 258.082L239.842 185.47C259.5 165.841 271.668 138.673 271.668 108.664H271.652ZM163 163C132.983 163 108.668 138.696 108.668 108.664C108.668 78.6594 132.983 54.332 163 54.332C193.005 54.332 217.332 78.6594 217.332 108.664C217.332 138.696 193.005 163 163 163Z" fill="white" fill-opacity="0.03" /></svg>');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: rem(16);
+
+  &-icon {
+    width: rem(40);
+    height: rem(40);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-address {
+    font-size: rem(16);
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  &-distance {
+    padding: rem(3) rem(10);
+    font-size: rem(14);
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+  }
+
+  .btn {
+    margin-top: rem(10);
+    padding: rem(12) rem(25);
+    font-size: rem(14);
+    font-weight: 500;
+    line-height: 1;
+    border: rem(1) solid #fff;
+    border-radius: rem(8);
+    transition: background var(--transition-ease), color var(--transition-ease);
+    cursor: pointer;
+
+    &:hover {
+      color: #000;
+      background: #fff;
+    }
+  }
+}
+</style>
+
+<style lang="scss">
+@use "@/assets/scss/_mixins.scss" as *;
+
+.bottom-sheet {
+  position: absolute !important;
+  width: 100% !important;
+
+  &__content {
+    max-width: 100% !important;
+    height: fit-content !important;
+    background: var(--background) !important;
+    border-radius: rem(15) rem(15) 0 0 !important;
+  }
+
+  &__draggable-area {
+    display: none !important;
   }
 }
 </style>

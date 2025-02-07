@@ -129,6 +129,12 @@ const routes = [
       },
 
       {
+        path: "gift",
+        name: "gift",
+        component: () => import("../views/Gift/index.vue"),
+      },
+
+      {
         path: "phone",
         component: () => import("../views/Phone/layout.vue"),
         children: [

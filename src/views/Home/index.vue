@@ -46,6 +46,7 @@ import settingsSvg from "./img/settings.svg";
 import contactsSvg from "./img/contacts.svg";
 import messagesSvg from "./img/messages.svg";
 import uderSvg from "./img/uder.svg";
+import giftSvg from "./img/gift.svg";
 
 export default {
   name: "home",
@@ -106,6 +107,11 @@ export default {
           icon: uderSvg,
           name: "Uder",
           link: "/uber",
+        },
+        {
+          icon: giftSvg,
+          name: "Gift",
+          link: "/gift",
         },
       ],
       tabs: [
