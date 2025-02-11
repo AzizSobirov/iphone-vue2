@@ -275,7 +275,7 @@ export default {
     overflow: hidden;
 
     &-item {
-      padding: rem(12) rem(13);
+      padding: rem(20) rem(20);
       width: 100%;
       color: var(--primary);
       font-size: rem(10);

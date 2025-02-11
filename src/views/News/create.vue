@@ -149,7 +149,7 @@ export default {
 
   select,
   textarea {
-    padding: rem(14);
+    padding: rem(22);
     width: 100%;
     color: #474747;
     font-size: rem(10);
@@ -172,7 +172,7 @@ export default {
   }
 
   textarea {
-    min-height: rem(100);
+    min-height: rem(160);
 
     &::placeholder {
       color: inherit;
@@ -227,12 +227,12 @@ export default {
   gap: rem(10);
 
   .btn {
-    height: rem(38);
+    height: rem(60);
     font-size: rem(10);
     font-weight: 600;
     font-family: "Gilroy", sans-serif;
     line-height: 1;
-    border-radius: rem(8);
+    border-radius: rem(12);
     transition: background var(--transition-ease);
     cursor: pointer;
 
@@ -249,7 +249,7 @@ export default {
     &-submit {
       color: #fff;
       background: var(--primary);
-      box-shadow: 0 0 rem(45) 0 rgba(254, 80, 83, 0.35);
+      box-shadow: 0 0 rem(80) 0 rgba(254, 80, 83, 0.35);
 
       &:hover {
         background: #ff6f71;
@@ -371,12 +371,12 @@ export default {
   }
 
   .btn {
-    height: rem(24);
+    height: rem(40);
     color: #fff;
     font-size: rem(9);
     font-weight: 500;
     line-height: 1;
-    border-radius: rem(5);
+    border-radius: rem(8);
     display: flex;
     align-items: center;
     justify-content: center;

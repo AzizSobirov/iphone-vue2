@@ -491,7 +491,7 @@ export default {
       position: relative;
       z-index: 2;
       margin: 0 auto;
-      padding: rem(4) rem(6);
+      padding: rem(6) rem(10);
       width: fit-content;
       color: var(--foreground);
       font-size: rem(8);
@@ -585,7 +585,7 @@ export default {
     }
 
     textarea {
-      padding: rem(6);
+      padding: rem(2) rem(6);
       height: rem(24);
       font-size: rem(10);
       font-weight: 500;

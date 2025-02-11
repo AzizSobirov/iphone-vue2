@@ -537,13 +537,13 @@ export default {
   }
 
   .btn {
-    width: rem(53);
-    height: rem(22);
+    width: rem(85);
+    height: rem(35);
     color: #747582;
     font-size: rem(10);
     font-weight: 500;
     background: var(--foreground-light);
-    border-radius: rem(3);
+    border-radius: rem(5);
     transition: background var(--transition-ease), color var(--transition-ease);
     display: flex;
     align-items: center;

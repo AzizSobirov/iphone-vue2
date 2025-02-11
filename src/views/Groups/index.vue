@@ -463,12 +463,12 @@ export default {
 
   &-black {
     width: 100%;
-    height: rem(43);
+    height: rem(58);
     color: #5f6776;
     font-size: rem(12);
     font-weight: 600;
     background: #c6cad2;
-    border-radius: rem(8);
+    border-radius: rem(12);
 
     &:hover {
       color: #fff;

@@ -275,7 +275,7 @@ export default {
 
       &.active {
         margin-left: rem(8);
-        width: rem(65);
+        width: rem(100);
         opacity: 1;
       }
     }

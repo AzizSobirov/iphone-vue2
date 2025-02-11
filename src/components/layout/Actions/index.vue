@@ -220,7 +220,7 @@ export default {
   gap: rem(5);
 
   &-title {
-    padding: rem(4) rem(6);
+    padding: rem(8) rem(10);
     width: fit-content;
     font-size: rem(8);
     font-weight: 600;

@@ -283,12 +283,12 @@ export default {
   }
 
   .btn {
-    height: rem(24);
+    height: rem(40);
     color: #fff;
     font-size: rem(9);
     font-weight: 500;
     line-height: 1;
-    border-radius: rem(5);
+    border-radius: rem(8);
     display: flex;
     align-items: center;
     justify-content: center;

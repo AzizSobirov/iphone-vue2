@@ -260,7 +260,7 @@ export default {
     }
 
     span {
-      padding: rem(8) rem(10);
+      padding: rem(12) rem(16);
       background: rgba(50, 50, 52, 0.13);
       border-radius: 9999px;
       font-size: rem(10);
@@ -289,7 +289,7 @@ export default {
     align-items: flex-start;
 
     input {
-      padding: rem(12) 0;
+      padding: rem(18) 0;
       width: 100%;
       font-size: rem(10);
       font-weight: 500;

@@ -53,10 +53,10 @@ body {
 }
 
 .iphone {
-  --safearea-top: 1.875rem;
-  --safearea-bottom: 1rem;
-  --safearea-inline: 1rem;
-  --base-radius: 2.375rem;
+  --safearea-top: #{rem(30)};
+  --safearea-bottom: #{rem(16)};
+  --safearea-inline: #{rem(16)};
+  --base-radius: #{rem(38)};
   --transition-ease: 0.25s ease-in-out;
 
   --primary: #0a83fb;

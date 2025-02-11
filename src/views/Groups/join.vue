@@ -158,13 +158,13 @@ export default {
   input {
     margin-bottom: rem(5);
     padding: 0 rem(10);
-    height: rem(42);
+    height: rem(56);
     width: 100%;
     font-size: rem(12);
     font-weight: 600;
     text-align: center;
     background: var(--foreground-light);
-    border-radius: rem(8);
+    border-radius: rem(12);
     border: rem(1) solid var(--foreground-light);
   }
 }
@@ -172,10 +172,10 @@ export default {
 .btn {
   position: relative;
   width: 100%;
-  height: rem(43);
+  height: rem(58);
   font-size: rem(12);
   font-weight: 600;
-  border-radius: rem(8);
+  border-radius: rem(12);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -97,14 +97,14 @@ export default {
 
 .flip-card__top,
 .flip-card__back::before {
-  width: rem(50) !important;
+  width: rem(26) !important;
   color: #1a1b25 !important;
   background: #fff !important;
 }
 
 .flip-card__bottom,
 .flip-card__back-bottom {
-  width: rem(50) !important;
+  width: rem(26) !important;
   color: #1a1b25 !important;
   background: #eeeeee !important;
   border: none !important;

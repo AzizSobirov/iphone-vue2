@@ -248,7 +248,7 @@ export default {
 
       &.active {
         margin-left: rem(8);
-        width: rem(65);
+        width: rem(100);
         opacity: 1;
       }
     }
@@ -272,7 +272,7 @@ export default {
     width: 100%;
 
     &-title {
-      padding-bottom: rem(8);
+      padding-bottom: rem(12);
       color: #5b5a61;
       font-size: rem(10);
       font-weight: 500;
@@ -281,7 +281,7 @@ export default {
   }
 
   &__item {
-    padding: rem(12) 0;
+    padding: rem(18) 0;
     font-size: rem(10);
     font-weight: 500;
     border-bottom: 1px solid var(--foreground-light);

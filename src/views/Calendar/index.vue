@@ -169,7 +169,7 @@ export default {
 
   .month-name {
     font-size: rem(10);
-    margin-bottom: rem(8);
+    margin-bottom: rem(14);
 
     &.active {
       color: var(--primary);
@@ -183,9 +183,9 @@ export default {
     gap: rem(2);
 
     .day {
-      min-width: rem(13);
-      width: rem(13);
-      height: rem(13);
+      min-width: rem(26);
+      width: rem(26);
+      height: rem(26);
       font-size: rem(8);
       line-height: 1;
       display: flex;

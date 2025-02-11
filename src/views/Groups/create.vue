@@ -234,10 +234,10 @@ export default {
 .btn {
   position: relative;
   width: 100%;
-  height: rem(43);
+  height: rem(58);
   font-size: rem(12);
   font-weight: 500;
-  border-radius: rem(8);
+  border-radius: rem(12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -265,8 +265,8 @@ export default {
   }
 
   svg {
-    width: rem(22);
-    height: rem(22);
+    width: rem(28);
+    height: rem(28);
   }
 }
 
@@ -350,13 +350,13 @@ export default {
 
   input {
     padding: 0 rem(10);
-    height: rem(42);
+    height: rem(58);
     width: 100%;
     font-size: rem(12);
     font-weight: 600;
     text-align: center;
     background: var(--foreground-light);
-    border-radius: rem(8);
+    border-radius: rem(12);
     border: rem(1) solid var(--foreground-light);
   }
 }

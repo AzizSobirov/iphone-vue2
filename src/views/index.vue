@@ -1,5 +1,6 @@
 <template>
   <div
+    ref="iphone"
     class="iphone"
     :class="{
       dark: device.theme === 'dark',
@@ -62,7 +63,7 @@ export default {
 
     updateFontSize() {
       const calculatedSize = (this.device.fontSize / 1080) * window.innerHeight;
-      document.documentElement.style.fontSize = `${calculatedSize}px`;
+      this.$refs.iphone.style.fontSize = `${calculatedSize}px`;
     },
   },
   mounted() {

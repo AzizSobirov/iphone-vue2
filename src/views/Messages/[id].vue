@@ -303,7 +303,7 @@ export default {
     }
 
     &-badge {
-      padding: rem(4) rem(5);
+      padding: rem(6) rem(8);
       color: #fff;
       font-size: rem(10);
       font-weight: 500;
@@ -352,10 +352,10 @@ export default {
 
   .message-date {
     position: sticky;
-    top: rem(102);
+    top: rem(200);
     z-index: 2;
     margin: 0 auto;
-    padding: rem(4) rem(6);
+    padding: rem(6) rem(8);
     width: fit-content;
     color: var(--foreground);
     font-size: rem(8);
@@ -373,11 +373,11 @@ export default {
     flex-direction: column;
 
     span {
-      padding: rem(10);
+      padding: rem(15);
       width: fit-content;
       font-size: rem(10);
       font-weight: 500;
-      border-radius: rem(8);
+      border-radius: rem(12);
       white-space: pre-wrap;
     }
 
@@ -449,7 +449,7 @@ export default {
   }
 
   textarea {
-    padding: rem(6);
+    padding: rem(2) rem(6);
     height: rem(24);
     font-size: rem(10);
     font-weight: 500;

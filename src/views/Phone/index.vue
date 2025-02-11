@@ -250,7 +250,7 @@ export default {
 
     .letters {
       font-size: rem(8);
-      letter-spacing: rem(1.5);
+      letter-spacing: rem(2.5);
     }
 
     .call {

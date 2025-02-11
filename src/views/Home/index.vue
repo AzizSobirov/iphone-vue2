@@ -225,7 +225,7 @@ export default {
     position: absolute;
     top: rem(-4);
     right: rem(-4);
-    padding: rem(2) rem(4);
+    padding: rem(3) rem(6);
     color: #fff;
     font-size: rem(10);
     line-height: 1;

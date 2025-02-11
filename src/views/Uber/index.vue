@@ -229,14 +229,14 @@ export default {
   }
 
   .btn {
-    height: rem(34);
+    height: rem(54);
     width: 100%;
     color: #fff;
     font-size: rem(10);
     font-weight: 500;
     font-family: "Gilroy", sans-serif;
     background: #252525;
-    border-radius: rem(4);
+    border-radius: rem(8);
     display: flex;
     align-items: center;
     justify-content: center;

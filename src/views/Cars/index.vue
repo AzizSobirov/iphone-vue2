@@ -572,10 +572,10 @@ export default {
 .btn {
   position: relative;
   width: 100%;
-  height: rem(43);
+  height: rem(58);
   font-size: rem(12);
   font-weight: 500;
-  border-radius: rem(8);
+  border-radius: rem(12);
   display: flex;
   align-items: center;
   justify-content: center;
